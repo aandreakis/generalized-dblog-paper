@@ -1,0 +1,469 @@
+{
+  "hits": {
+    "hits": [
+      {
+        "created": "2026-08-01T04:48:17.092274+00:00",
+        "modified": "2026-08-07T08:30:41.896699+00:00",
+        "id": 21732790,
+        "conceptrecid": "20389696",
+        "doi": "10.5281/zenodo.21732790",
+        "conceptdoi": "10.5281/zenodo.20389696",
+        "doi_url": "https://doi.org/10.5281/zenodo.21732790",
+        "metadata": {
+          "title": "Isabelle/HOL formal development for \"A Theoretical Study of DBLog\"",
+          "doi": "10.5281/zenodo.21732790",
+          "publication_date": "2026-08-01",
+          "description": "<p>Machine-checked Isabelle/HOL formal development accompanying the paper \"A Theoretical Study of DBLog: Certified Virtual Cuts for a Snapshot-Equivalent Replay of Live Databases\" by Andreas Andreakis.</p>\n<p>DBLog is studied as a snapshot-equivalent replay protocol for live databases: it produces a logical, replay-equivalent snapshot of a live database scope without taking a physical database snapshot. The central formal object is the certified virtual cut &mdash; a finite, asynchronously gathered mix of change-data-capture events and chunk reads whose certified replay reaches the same state as the source at a chosen frontier on a chosen key scope.</p>\n<p>The session DBLog_Virtual_Cuts comprises 38 theory files, builds sorry-free under Isabelle2025-2 using HOL-Library only, and generates its own entry document (PDF). The development is conservative throughout: it declares no axioms, every witness and counterexample fixture is a constructed instance, and the only type not introduced as a datatype or record is a conservative typedef for source coordinates. A public checker model exhibits all nine headline theorems non-degenerately on a constructed witness. The kernel checks the proofs under the conditional premises stated in each theorem; it does not, and cannot, discharge the deployment obligations or the external-observation assumption that a real deployment must establish. See README.md inside the archive for build instructions and a description of the main results.</p>\n<p>Version 2.1 repairs a defect found by an external review of the 2.0 artifact: the same-evidence negative control in the Layer 3 fixtures failed to materialize its run, so the accessor-agreement comparison it advertises was never exercised (a vacuous control; no theorem statement was affected). The repair makes the control materialize, and a new kernel-checked regression theory pins that reachability. The nine headline theorem statements are unchanged from 2.0; the repaired control's own statement is strictly strengthened.</p>\n<p>Version 2.0 rebuilds the development's foundations in this conservative, axiom-free style &mdash; version 1.0 introduced its witnesses and counterexample fixtures by axiomatization. The theorem statements are unchanged.</p>",
+          "access_right": "open",
+          "creators": [
+            {
+              "name": "Andreakis, Andreas",
+              "affiliation": "Independent Researcher",
+              "orcid": "0009-0003-9025-9402"
+            }
+          ],
+          "keywords": [
+            "Isabelle/HOL",
+            "formal verification",
+            "interactive theorem proving",
+            "change data capture",
+            "CDC",
+            "database replication",
+            "virtual cut",
+            "snapshot-equivalent replay",
+            "DBLog"
+          ],
+          "related_identifiers": [
+            {
+              "identifier": "arXiv:2010.12597",
+              "relation": "references",
+              "resource_type": "publication-preprint",
+              "scheme": "arxiv"
+            },
+            {
+              "identifier": "arXiv:2605.31475",
+              "relation": "isSupplementTo",
+              "resource_type": "publication-preprint",
+              "scheme": "arxiv"
+            }
+          ],
+          "dates": [
+            {
+              "type": "created"
+            }
+          ],
+          "version": "2.1",
+          "language": "eng",
+          "custom": {
+            "code:codeRepository": "https://github.com/aandreakis/dblog-theory-virtual-cuts-paper",
+            "code:programmingLanguage": [
+              {
+                "id": "isabelle",
+                "title": {
+                  "en": "Isabelle"
+                }
+              }
+            ]
+          },
+          "resource_type": {
+            "title": "Software",
+            "type": "software"
+          },
+          "license": {
+            "id": "bsd-3-clause"
+          },
+          "relations": {
+            "version": [
+              {
+                "index": 2,
+                "is_last": true,
+                "parent": {
+                  "pid_type": "recid",
+                  "pid_value": "20389696"
+                }
+              }
+            ]
+          }
+        },
+        "title": "Isabelle/HOL formal development for \"A Theoretical Study of DBLog\"",
+        "links": {
+          "self": "https://zenodo.org/api/records/21732790",
+          "self_html": "https://zenodo.org/records/21732790",
+          "preview_html": "https://zenodo.org/records/21732790?preview=1",
+          "doi": "https://doi.org/10.5281/zenodo.21732790",
+          "self_doi": "https://doi.org/10.5281/zenodo.21732790",
+          "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.21732790",
+          "reserve_doi": "https://zenodo.org/api/records/21732790/draft/pids/doi",
+          "parent": "https://zenodo.org/api/records/20389696",
+          "parent_html": "https://zenodo.org/records/20389696",
+          "parent_doi": "https://doi.org/10.5281/zenodo.20389696",
+          "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.20389696",
+          "self_iiif_manifest": "https://zenodo.org/api/iiif/record:21732790/manifest",
+          "self_iiif_sequence": "https://zenodo.org/api/iiif/record:21732790/sequence/default",
+          "files": "https://zenodo.org/api/records/21732790/files",
+          "media_files": "https://zenodo.org/api/records/21732790/media-files",
+          "archive": "https://zenodo.org/api/records/21732790/files-archive",
+          "archive_media": "https://zenodo.org/api/records/21732790/media-files-archive",
+          "latest": "https://zenodo.org/api/records/21732790/versions/latest",
+          "latest_html": "https://zenodo.org/records/21732790/latest",
+          "versions": "https://zenodo.org/api/records/21732790/versions",
+          "draft": "https://zenodo.org/api/records/21732790/draft",
+          "access_links": "https://zenodo.org/api/records/21732790/access/links",
+          "access_grants": "https://zenodo.org/api/records/21732790/access/grants",
+          "access_users": "https://zenodo.org/api/records/21732790/access/users",
+          "access_request": "https://zenodo.org/api/records/21732790/access/request",
+          "access": "https://zenodo.org/api/records/21732790/access",
+          "communities": "https://zenodo.org/api/records/21732790/communities",
+          "communities-suggestions": "https://zenodo.org/api/records/21732790/communities-suggestions",
+          "request_deletion": "https://zenodo.org/api/records/21732790/request-deletion",
+          "file_modification": "https://zenodo.org/api/records/21732790/file-modification",
+          "quota_increase": "https://zenodo.org/api/records/21732790/quota-increase",
+          "requests": "https://zenodo.org/api/records/21732790/requests"
+        },
+        "updated": "2026-08-07T08:30:41.896699+00:00",
+        "recid": "21732790",
+        "revision": 7,
+        "files": [
+          {
+            "id": "d80ecdd4-7183-42ed-8627-491bf31a9a5e",
+            "key": "DBLog_Virtual_Cuts-2.1.tar.gz",
+            "size": 150330,
+            "checksum": "md5:ce28969df017fc91222e5209e19ebc0a",
+            "links": {
+              "self": "https://zenodo.org/api/records/21732790/files/DBLog_Virtual_Cuts-2.1.tar.gz/content"
+            }
+          }
+        ],
+        "swh": null,
+        "owners": [
+          {
+            "id": "1660086"
+          }
+        ],
+        "status": "published",
+        "stats": {
+          "downloads": 19,
+          "unique_downloads": 19,
+          "views": 210,
+          "unique_views": 164,
+          "version_downloads": 4,
+          "version_unique_downloads": 4,
+          "version_unique_views": 29,
+          "version_views": 40
+        },
+        "state": "done",
+        "submitted": true
+      },
+      {
+        "created": "2026-06-12T02:16:13.178145+00:00",
+        "modified": "2026-08-07T08:30:22.983463+00:00",
+        "id": 20652511,
+        "conceptrecid": "20389696",
+        "doi": "10.5281/zenodo.20652511",
+        "conceptdoi": "10.5281/zenodo.20389696",
+        "doi_url": "https://doi.org/10.5281/zenodo.20652511",
+        "metadata": {
+          "title": "Isabelle/HOL formal development for \"A Theoretical Study of DBLog\"",
+          "doi": "10.5281/zenodo.20652511",
+          "publication_date": "2026-06-12",
+          "description": "<p>Machine-checked Isabelle/HOL formal development accompanying the paper \"A Theoretical Study of DBLog: Certified Virtual Cuts for a Snapshot-Equivalent Replay of Live Databases\" by Andreas Andreakis.</p>\n<p>DBLog is studied as a snapshot-equivalent replay protocol for live databases: it produces a logical, replay-equivalent snapshot of a live database scope without taking a physical database snapshot. The central formal object is the certified virtual cut &mdash; a finite, asynchronously gathered mix of change-data-capture events and chunk reads whose certified replay reaches the same state as the source at a chosen frontier on a chosen key scope.</p>\n<p>The session DBLog_Virtual_Cuts comprises 37 theory files, builds sorry-free under Isabelle2025-2 using HOL-Library only, and generates its own entry document (PDF). The development is conservative throughout: it declares no axioms, every witness and counterexample fixture is a constructed instance, and the only type not introduced as a datatype or record is a conservative typedef for source coordinates. A public checker model exhibits all nine headline theorems non-degenerately on a constructed witness. The kernel checks the proofs under the conditional premises stated in each theorem; it does not, and cannot, discharge the deployment obligations or the external-observation assumption that a real deployment must establish. See README.md inside the archive for build instructions and a description of the main results.</p>\n<p>Version 2.0 rebuilds the development's foundations in this conservative, axiom-free style &mdash; version 1.0 introduced its witnesses and counterexample fixtures by axiomatization. The theorem statements are unchanged.</p>",
+          "access_right": "open",
+          "creators": [
+            {
+              "name": "Andreakis, Andreas",
+              "affiliation": "Independent Researcher",
+              "orcid": "0009-0003-9025-9402"
+            }
+          ],
+          "keywords": [
+            "Isabelle/HOL",
+            "formal verification",
+            "interactive theorem proving",
+            "change data capture",
+            "CDC",
+            "database replication",
+            "virtual cut",
+            "snapshot-equivalent replay",
+            "DBLog"
+          ],
+          "related_identifiers": [
+            {
+              "identifier": "arXiv:2010.12597",
+              "relation": "references",
+              "resource_type": "publication-preprint",
+              "scheme": "arxiv"
+            },
+            {
+              "identifier": "arXiv:2605.31475",
+              "relation": "isSupplementTo",
+              "resource_type": "publication-preprint",
+              "scheme": "arxiv"
+            }
+          ],
+          "dates": [
+            {
+              "type": "created"
+            }
+          ],
+          "version": "2.0",
+          "language": "eng",
+          "custom": {
+            "code:codeRepository": "https://github.com/aandreakis/dblog-theory-virtual-cuts-paper",
+            "code:programmingLanguage": [
+              {
+                "id": "isabelle",
+                "title": {
+                  "en": "Isabelle"
+                }
+              }
+            ]
+          },
+          "resource_type": {
+            "title": "Software",
+            "type": "software"
+          },
+          "license": {
+            "id": "bsd-3-clause"
+          },
+          "relations": {
+            "version": [
+              {
+                "index": 1,
+                "is_last": false,
+                "parent": {
+                  "pid_type": "recid",
+                  "pid_value": "20389696"
+                }
+              }
+            ]
+          }
+        },
+        "title": "Isabelle/HOL formal development for \"A Theoretical Study of DBLog\"",
+        "links": {
+          "self": "https://zenodo.org/api/records/20652511",
+          "self_html": "https://zenodo.org/records/20652511",
+          "preview_html": "https://zenodo.org/records/20652511?preview=1",
+          "doi": "https://doi.org/10.5281/zenodo.20652511",
+          "self_doi": "https://doi.org/10.5281/zenodo.20652511",
+          "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.20652511",
+          "reserve_doi": "https://zenodo.org/api/records/20652511/draft/pids/doi",
+          "parent": "https://zenodo.org/api/records/20389696",
+          "parent_html": "https://zenodo.org/records/20389696",
+          "parent_doi": "https://doi.org/10.5281/zenodo.20389696",
+          "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.20389696",
+          "self_iiif_manifest": "https://zenodo.org/api/iiif/record:20652511/manifest",
+          "self_iiif_sequence": "https://zenodo.org/api/iiif/record:20652511/sequence/default",
+          "files": "https://zenodo.org/api/records/20652511/files",
+          "media_files": "https://zenodo.org/api/records/20652511/media-files",
+          "archive": "https://zenodo.org/api/records/20652511/files-archive",
+          "archive_media": "https://zenodo.org/api/records/20652511/media-files-archive",
+          "latest": "https://zenodo.org/api/records/20652511/versions/latest",
+          "latest_html": "https://zenodo.org/records/20652511/latest",
+          "versions": "https://zenodo.org/api/records/20652511/versions",
+          "draft": "https://zenodo.org/api/records/20652511/draft",
+          "access_links": "https://zenodo.org/api/records/20652511/access/links",
+          "access_grants": "https://zenodo.org/api/records/20652511/access/grants",
+          "access_users": "https://zenodo.org/api/records/20652511/access/users",
+          "access_request": "https://zenodo.org/api/records/20652511/access/request",
+          "access": "https://zenodo.org/api/records/20652511/access",
+          "communities": "https://zenodo.org/api/records/20652511/communities",
+          "communities-suggestions": "https://zenodo.org/api/records/20652511/communities-suggestions",
+          "request_deletion": "https://zenodo.org/api/records/20652511/request-deletion",
+          "file_modification": "https://zenodo.org/api/records/20652511/file-modification",
+          "quota_increase": "https://zenodo.org/api/records/20652511/quota-increase",
+          "requests": "https://zenodo.org/api/records/20652511/requests"
+        },
+        "updated": "2026-08-07T08:30:22.983463+00:00",
+        "recid": "20652511",
+        "revision": 7,
+        "files": [
+          {
+            "id": "a09ab7be-8915-41eb-b8f6-5d94a8ba2fcb",
+            "key": "DBLog_Virtual_Cuts-2.0.tar.gz",
+            "size": 149521,
+            "checksum": "md5:fbf175b9f9705c80f9f950fba7dde525",
+            "links": {
+              "self": "https://zenodo.org/api/records/20652511/files/DBLog_Virtual_Cuts-2.0.tar.gz/content"
+            }
+          }
+        ],
+        "swh": null,
+        "owners": [
+          {
+            "id": "1660086"
+          }
+        ],
+        "status": "published",
+        "stats": {
+          "downloads": 19,
+          "unique_downloads": 19,
+          "views": 210,
+          "unique_views": 164,
+          "version_downloads": 11,
+          "version_unique_downloads": 11,
+          "version_unique_views": 59,
+          "version_views": 67
+        },
+        "state": "done",
+        "submitted": true
+      },
+      {
+        "created": "2026-05-26T05:08:25.423684+00:00",
+        "modified": "2026-08-07T08:30:02.399991+00:00",
+        "id": 20389697,
+        "conceptrecid": "20389696",
+        "doi": "10.5281/zenodo.20389697",
+        "conceptdoi": "10.5281/zenodo.20389696",
+        "doi_url": "https://doi.org/10.5281/zenodo.20389697",
+        "metadata": {
+          "title": "Isabelle/HOL formal development for \"A Theoretical Study of DBLog\"",
+          "doi": "10.5281/zenodo.20389697",
+          "publication_date": "2026-05-26",
+          "description": "<p class=\"p1\">Machine-checked Isabelle/HOL formal development accompanying the paper&nbsp;\"A Theoretical Study of DBLog: Certified Virtual Cuts for a Snapshot-Equivalent&nbsp;Replay of Live Databases\" by Andreas Andreakis.</p>\n<p class=\"p1\">DBLog is studied as a snapshot-equivalent replay protocol for live databases: it produces a logical, replay-equivalent snapshot of a live database scope without taking a physical database snapshot. The central formal object is the certified virtual cut &mdash; a finite, asynchronously gathered mix of change-data-capture events and chunk reads whose certified replay reaches the same state as the source at a chosen frontier on a chosen key scope.</p>\n<p class=\"p1\">The session DBLog_Virtual_Cuts comprises 17 theory files and builds sorry-free&nbsp;under Isabelle2025-2 using HOL-Library only. The kernel checks the proofs under&nbsp;the conditional premises stated in each theorem; it does not, and cannot,&nbsp;discharge the deployment obligations or the external-observation assumption&nbsp;that a real deployment must establish. See README.md inside the archive for&nbsp;build instructions and a description of the main results.</p>",
+          "access_right": "open",
+          "creators": [
+            {
+              "name": "Andreakis, Andreas",
+              "affiliation": "Independent Researcher",
+              "orcid": "0009-0003-9025-9402"
+            }
+          ],
+          "keywords": [
+            "Isabelle/HOL",
+            "formal verification",
+            "interactive theorem proving",
+            "change data capture",
+            "CDC",
+            "database replication",
+            "virtual cut",
+            "snapshot-equivalent replay",
+            "DBLog"
+          ],
+          "related_identifiers": [
+            {
+              "identifier": "arXiv:2010.12597",
+              "relation": "references",
+              "resource_type": "publication-preprint",
+              "scheme": "arxiv"
+            },
+            {
+              "identifier": "arXiv:2605.31475",
+              "relation": "isSupplementTo",
+              "resource_type": "publication-preprint",
+              "scheme": "arxiv"
+            }
+          ],
+          "dates": [
+            {
+              "type": "created"
+            }
+          ],
+          "version": "1.0",
+          "language": "eng",
+          "custom": {
+            "code:codeRepository": "https://github.com/aandreakis/dblog-theory-virtual-cuts-paper",
+            "code:programmingLanguage": [
+              {
+                "id": "isabelle",
+                "title": {
+                  "en": "Isabelle"
+                }
+              }
+            ]
+          },
+          "resource_type": {
+            "title": "Software",
+            "type": "software"
+          },
+          "license": {
+            "id": "bsd-3-clause"
+          },
+          "relations": {
+            "version": [
+              {
+                "index": 0,
+                "is_last": false,
+                "parent": {
+                  "pid_type": "recid",
+                  "pid_value": "20389696"
+                }
+              }
+            ]
+          }
+        },
+        "title": "Isabelle/HOL formal development for \"A Theoretical Study of DBLog\"",
+        "links": {
+          "self": "https://zenodo.org/api/records/20389697",
+          "self_html": "https://zenodo.org/records/20389697",
+          "preview_html": "https://zenodo.org/records/20389697?preview=1",
+          "doi": "https://doi.org/10.5281/zenodo.20389697",
+          "self_doi": "https://doi.org/10.5281/zenodo.20389697",
+          "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.20389697",
+          "reserve_doi": "https://zenodo.org/api/records/20389697/draft/pids/doi",
+          "parent": "https://zenodo.org/api/records/20389696",
+          "parent_html": "https://zenodo.org/records/20389696",
+          "parent_doi": "https://doi.org/10.5281/zenodo.20389696",
+          "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.20389696",
+          "self_iiif_manifest": "https://zenodo.org/api/iiif/record:20389697/manifest",
+          "self_iiif_sequence": "https://zenodo.org/api/iiif/record:20389697/sequence/default",
+          "files": "https://zenodo.org/api/records/20389697/files",
+          "media_files": "https://zenodo.org/api/records/20389697/media-files",
+          "archive": "https://zenodo.org/api/records/20389697/files-archive",
+          "archive_media": "https://zenodo.org/api/records/20389697/media-files-archive",
+          "latest": "https://zenodo.org/api/records/20389697/versions/latest",
+          "latest_html": "https://zenodo.org/records/20389697/latest",
+          "versions": "https://zenodo.org/api/records/20389697/versions",
+          "draft": "https://zenodo.org/api/records/20389697/draft",
+          "access_links": "https://zenodo.org/api/records/20389697/access/links",
+          "access_grants": "https://zenodo.org/api/records/20389697/access/grants",
+          "access_users": "https://zenodo.org/api/records/20389697/access/users",
+          "access_request": "https://zenodo.org/api/records/20389697/access/request",
+          "access": "https://zenodo.org/api/records/20389697/access",
+          "communities": "https://zenodo.org/api/records/20389697/communities",
+          "communities-suggestions": "https://zenodo.org/api/records/20389697/communities-suggestions",
+          "request_deletion": "https://zenodo.org/api/records/20389697/request-deletion",
+          "file_modification": "https://zenodo.org/api/records/20389697/file-modification",
+          "quota_increase": "https://zenodo.org/api/records/20389697/quota-increase",
+          "requests": "https://zenodo.org/api/records/20389697/requests"
+        },
+        "updated": "2026-08-07T08:30:02.399991+00:00",
+        "recid": "20389697",
+        "revision": 7,
+        "files": [
+          {
+            "id": "85943377-a3ce-44f6-a887-2855a95fa42c",
+            "key": "DBLog_Virtual_Cuts-1.0.tar.gz",
+            "size": 128119,
+            "checksum": "md5:1111b89bf1fc62d4fdd789f81953cfc2",
+            "links": {
+              "self": "https://zenodo.org/api/records/20389697/files/DBLog_Virtual_Cuts-1.0.tar.gz/content"
+            }
+          }
+        ],
+        "swh": null,
+        "owners": [
+          {
+            "id": "1660086"
+          }
+        ],
+        "status": "published",
+        "stats": {
+          "downloads": 19,
+          "unique_downloads": 19,
+          "views": 210,
+          "unique_views": 164,
+          "version_downloads": 4,
+          "version_unique_downloads": 4,
+          "version_unique_views": 76,
+          "version_views": 103
+        },
+        "state": "done",
+        "submitted": true
+      }
+    ],
+    "total": 3
+  },
+  "links": {
+    "self": "https://zenodo.org/api/records/21732790/versions?page=1&size=25&sort=version"
+  }
+}

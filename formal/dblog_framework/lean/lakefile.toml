@@ -1,0 +1,6 @@
+name = "DBLogContract"
+version = "0.1.0"
+defaultTargets = ["DBLogContract"]
+
+[[lean_lib]]
+name = "DBLogContract"

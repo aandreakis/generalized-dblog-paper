@@ -1,0 +1,20 @@
+--- DBLog_Virtual_Cuts-2.1/Layer01_Fixtures_Model.thy
++++ formal/Layer01_Fixtures_Model.thy
+@@ -4,7 +4,7 @@
+ *)
+ 
+ theory Layer01_Fixtures_Model
+-  imports Source_Coordinates
++  imports Dual_Write_Layer0.Source_Coordinates
+ begin
+ 
+ section \<open>Concrete run models for the Layer 0/1 fixtures\<close>
+@@ -36,7 +36,7 @@
+   pivots on the documented clause alone. The source coordinates
+   (@{const c0} and the fixtures' own
+   @{text "*_c1"} coordinates) are @{const coord_of_nat} definitions from
+-  @{theory DBLog_Virtual_Cuts.Source_Coordinates}, which also proves their
++  @{theory Dual_Write_Layer0.Source_Coordinates}, which also proves their
+   order lemmas (@{text "src_lt c0 *"}). The Layer 0 source fixture needs no
+   run model: its history @{text H_c0} is a concrete @{command definition} in
+   @{text Layer01_Fixtures_Core}, with no run carrier involved.

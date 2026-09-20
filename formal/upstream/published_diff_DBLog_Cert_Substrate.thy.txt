@@ -1,0 +1,62 @@
+--- DBLog_Virtual_Cuts-2.1/DBLog_Cert_Substrate.thy
++++ formal/DBLog_Cert_Substrate.thy
+@@ -48,7 +48,7 @@
+         context extension in @{text Layer4_Whole_Table}), but over the
+         abstract carriers.
+ 
+-  The carrier-independent ``pure'' core (@{const core_virtual_cut_state}, the
++  The carrier-independent ``pure'' core (@{const virtual_cut_state}, the
+   Layer 4 anchor / table-scope definitions @{const table_scope_between} /
+   @{const anchor_complete_at_boundary} / @{const all_post_anchor_changes_covered} /
+   @{const no_unclaimed_replay_keys}, and the outside-scope bridge lemma
+@@ -108,13 +108,13 @@
+ 
+ text \<open>The central object, cert-side: on @{text "scope C"} the replay of
+   @{text "clean_prefix C"} equals the source state at @{text "frontier C"}.
+-  The cert-accessor instance of the core @{const core_virtual_cut_state}.\<close>
++  The cert-accessor instance of the core @{const virtual_cut_state}.\<close>
+ 
+ definition virtual_cut
+   :: "('k \<rightharpoonup> 'v) \<Rightarrow> 'cert \<Rightarrow> ('k, 'v) src_history \<Rightarrow> bool"
+ where
+   "virtual_cut b0 C H \<longleftrightarrow>
+-     core_virtual_cut_state b0 (clean_prefix C) (scope C) (frontier C) H"
++     virtual_cut_state b0 (clean_prefix C) (scope C) (frontier C) H"
+ 
+ definition checker_input_ok :: "'cert \<Rightarrow> 'evidence \<Rightarrow> bool"
+ where
+@@ -144,9 +144,9 @@
+ 
+ lemma cert_run_coherent_virtual_cut_state_subst:
+   assumes "cert_accessors_agree C R"
+-      and "core_virtual_cut_state b0 (clean_prefix_of R) (scope_of R)
++      and "virtual_cut_state b0 (clean_prefix_of R) (scope_of R)
+                              (frontier_of R) H"
+-  shows   "core_virtual_cut_state b0 (clean_prefix C) (scope C)
++  shows   "virtual_cut_state b0 (clean_prefix C) (scope C)
+                              (frontier C) H"
+   using assms
+   unfolding cert_accessors_agree_def
+@@ -182,7 +182,7 @@
+   have scoped:
+     "restrict (Apply (clean_prefix C)) (scope C)
+        = restrict (Src b0 H (frontier C)) (scope C)"
+-    using vc unfolding virtual_cut_def core_virtual_cut_state_def by simp
++    using vc unfolding virtual_cut_def virtual_cut_state_def by simp
+   have contained:
+     "table_scope_between b0 H b (frontier C) \<subseteq> scope C"
+     by (rule whole_table_claim_scope_imp_table_scope_contained[OF whole])
+@@ -260,11 +260,11 @@
+   have agree: "cert_accessors_agree C R"
+     using coherent unfolding cert_run_coherent_def by blast
+   have run_vcs:
+-    "core_virtual_cut_state b0 (clean_prefix_of R) (scope_of R)
++    "virtual_cut_state b0 (clean_prefix_of R) (scope_of R)
+                        (frontier_of R) H"
+     using wellformed_run_implies_virtual_cut[OF wf] .
+   have cert_vcs:
+-    "core_virtual_cut_state b0 (clean_prefix C) (scope C) (frontier C) H"
++    "virtual_cut_state b0 (clean_prefix C) (scope C) (frontier C) H"
+     using cert_run_coherent_virtual_cut_state_subst[OF agree run_vcs] .
+   show ?thesis
+     unfolding virtual_cut_def

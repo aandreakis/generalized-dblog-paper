@@ -1,0 +1,21 @@
+# LaTeX build products
+paper/*.aux
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/main.pdf
+
+# Isabelle build output
+formal/**/output/
+formal/**/.isabelle/
+
+# Local preview runtime
+.preview-server/
+/preview/
+
+# OS metadata
+.DS_Store

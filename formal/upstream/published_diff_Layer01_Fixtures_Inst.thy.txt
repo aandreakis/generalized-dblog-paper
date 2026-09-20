@@ -1,0 +1,11 @@
+--- DBLog_Virtual_Cuts-2.1/Layer01_Fixtures_Inst.thy
++++ formal/Layer01_Fixtures_Inst.thy
+@@ -44,7 +44,7 @@
+         coordinates (@{const caf_c1} / @{const sc_c1} / @{const ec_c1} /
+         @{const md_c1} / @{const dm_c1} / @{const do_c1}) are
+         @{const coord_of_nat} definitions in
+-        @{theory DBLog_Virtual_Cuts.Source_Coordinates}, with their order
++        @{theory Dual_Write_Layer0.Source_Coordinates}, with their order
+         lemmas proved there.
+ 
+   The fixtures fix the key/value

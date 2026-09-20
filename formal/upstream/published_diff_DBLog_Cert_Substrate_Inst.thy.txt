@@ -1,0 +1,20 @@
+--- DBLog_Virtual_Cuts-2.1/DBLog_Cert_Substrate_Inst.thy
++++ formal/DBLog_Cert_Substrate_Inst.thy
+@@ -64,7 +64,7 @@
+   shows "virtual_cut_state b0 (clean_prefix C) K' (frontier C) H"
+ proof -
+   have "virtual_cut_state b0 (clean_prefix C) (scope C) (frontier C) H"
+-    using vc by (simp add: virtual_cut_def core_virtual_cut_state_def virtual_cut_state_def)
++    using vc by (simp add: virtual_cut_def virtual_cut_state_def virtual_cut_state_def)
+   thus ?thesis
+     using sub by (rule virtual_cut_state_restrict_scope)
+ qed
+@@ -90,7 +90,7 @@
+   have "virtual_cut b0 C H"
+     by (rule accepted_virtual_cut_sound[OF accept faithful])
+   hence "virtual_cut_state b0 (clean_prefix C) (scope C) (frontier C) H"
+-    unfolding virtual_cut_def core_virtual_cut_state_def virtual_cut_state_def .
++    unfolding virtual_cut_def virtual_cut_state_def virtual_cut_state_def .
+   from virtual_cut_state_continuation[OF wfH this seg]
+   show ?thesis .
+ qed

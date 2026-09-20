@@ -1,0 +1,92 @@
+--- DBLog_Virtual_Cuts-2.1/Layer4_Fixtures_Inst.thy
++++ formal/Layer4_Fixtures_Inst.thy
+@@ -152,7 +152,7 @@
+ 
+ lemma cf_missing_insert_virtual_cut:
+   "cf.virtual_cut b0_ex CMissingInsert H_ex"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def
+   using l4_missing_insert_scoped_virtual_cut_state
+   by (simp add: virtual_cut_state_def)
+ 
+@@ -235,7 +235,7 @@
+ 
+ lemma cf_delete_touch_virtual_cut:
+   "cf.virtual_cut b0_ex CDeleteTouch l4_delete_touch_H"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def
+   using cf_delete_touch_unrestricted_equality by simp
+ 
+ lemma cf_delete_touch_replay_keys:
+@@ -332,7 +332,7 @@
+ 
+ lemma cf_empty_virtual_cut:
+   "cf.virtual_cut l4_empty_b0 CEmpty l4_empty_H"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def
+   using cf_empty_unrestricted_equality by simp
+ 
+ lemma cf_empty_no_unclaimed:
+@@ -429,7 +429,7 @@
+   assume vc: "cf.virtual_cut b0_ex CClaimRefresh H_ex"
+   hence "restrict (Apply (l4f_clean_prefix CClaimRefresh)) (l4f_scope CClaimRefresh)
+        = restrict (Src b0_ex H_ex (l4f_frontier CClaimRefresh)) (l4f_scope CClaimRefresh)"
+-    unfolding cf.virtual_cut_def core_virtual_cut_state_def by simp
++    unfolding cf.virtual_cut_def virtual_cut_state_def by simp
+   hence "restrict (Apply (l4f_clean_prefix CClaimRefresh)) (l4f_scope CClaimRefresh) (300::nat)
+        = restrict (Src b0_ex H_ex (l4f_frontier CClaimRefresh)) (l4f_scope CClaimRefresh) 300"
+     by simp
+@@ -518,7 +518,7 @@
+ 
+ lemma cf_after_frontier_virtual_cut:
+   "cf.virtual_cut l4_after_frontier_b0 CAfterFrontier l4_after_frontier_H"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def restrict_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def restrict_def
+   by simp
+ 
+ lemma cf_after_frontier_not_whole_table:
+@@ -600,7 +600,7 @@
+ 
+ lemma cf_update_refresh_virtual_cut:
+   "cf.virtual_cut b0_ex CUpdateRefresh H_ex"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def
+   using l4_update_refresh_scoped_virtual_cut_state by (simp add: virtual_cut_state_def)
+ 
+ lemma cf_update_refresh_anchor_complete:
+@@ -677,7 +677,7 @@
+ 
+ lemma cf_unclaimed_virtual_cut:
+   "cf.virtual_cut b0_ex CUnclaimed H_ex"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def
+   using l4_unclaimed_scoped_virtual_cut_state by (simp add: virtual_cut_state_def)
+ 
+ lemma cf_unclaimed_anchor_complete:
+@@ -814,7 +814,7 @@
+ 
+ lemma cf_b0_anchor_virtual_cut:
+   "cf.virtual_cut l4_b0_anchor_b0 CB0Anchor l4_b0_anchor_H"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def
+   using cf_b0_anchor_unrestricted_equality by simp
+ 
+ theorem layer4_b0_base_state_anchor_domain_fixture_constructed:
+@@ -964,7 +964,7 @@
+ 
+ lemma cf_same_boundary_virtual_cut:
+   "cf.virtual_cut l4_same_boundary_b0 CSameBoundary l4_same_boundary_H"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def restrict_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def restrict_def
+ proof (rule ext)
+   fix k :: nat
+   show "(if k \<in> l4f_scope CSameBoundary
+@@ -1096,7 +1096,7 @@
+ 
+ lemma amb_ambig_virtual_cut:
+   "amb.virtual_cut b0_ex CAmbig H_ex"
+-  unfolding amb.virtual_cut_def core_virtual_cut_state_def
++  unfolding amb.virtual_cut_def virtual_cut_state_def
+   using rep_ex_virtual_cut_state by (simp add: virtual_cut_state_def)
+ 
+ lemma amb_ambig_anchor_complete:

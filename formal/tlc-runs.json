@@ -1,0 +1,202 @@
+[
+  {
+    "run_id": "S1-A",
+    "spec": "WatermarkLoop.tla",
+    "cfg": "WatermarkLoop.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S1-B",
+    "spec": "WatermarkLoop.tla",
+    "cfg": "WatermarkLoop_torn_green.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S1-C",
+    "spec": "WatermarkLoop.tla",
+    "cfg": "WatermarkLoop_torn.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "SharedInstantExists"
+  },
+  {
+    "run_id": "S2-A",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S2-B",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_torn_green.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S2-C",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_torn.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "SharedInstantExists"
+  },
+  {
+    "run_id": "S2-D0",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_alinear_green.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S2-D1",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_alinear_oracle.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "OracleFaithful"
+  },
+  {
+    "run_id": "S2-D2",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_alinear_replay.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S2-D3",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_alinear_replay_wide.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S2-E1",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_uncommitted_premise.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "CommittedOnly"
+  },
+  {
+    "run_id": "S2-E2",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_uncommitted_oracle.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "OracleFaithful"
+  },
+  {
+    "run_id": "S2-E3",
+    "spec": "ReadOnlyBrackets.tla",
+    "cfg": "ReadOnlyBrackets_uncommitted_replay.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S3-A",
+    "spec": "ParallelChunks.tla",
+    "cfg": "ParallelChunks.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S3-B",
+    "spec": "ParallelChunks.tla",
+    "cfg": "ParallelChunks_prop3_green.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S3-C",
+    "spec": "ParallelChunks.tla",
+    "cfg": "ParallelChunks_noclausea.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "FrontierExact"
+  },
+  {
+    "run_id": "S3-D",
+    "spec": "ParallelChunks.tla",
+    "cfg": "ParallelChunks_pointsplice_green.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S3-E",
+    "spec": "ParallelChunks.tla",
+    "cfg": "ParallelChunks_pointsplice.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "EarlyOnsetExists"
+  },
+  {
+    "run_id": "S4-A",
+    "spec": "DumpSplice.tla",
+    "cfg": "DumpSplice.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S4-B",
+    "spec": "DumpSplice.tla",
+    "cfg": "DumpSplice_degraded.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S4-C",
+    "spec": "DumpSplice.tla",
+    "cfg": "DumpSplice_wrongpoint.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "FrontierExact"
+  },
+  {
+    "run_id": "S4-D",
+    "spec": "DumpSplice.tla",
+    "cfg": "DumpSplice_degraded_probe.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "WidenedTrajectory"
+  },
+  {
+    "run_id": "S5-A",
+    "spec": "SharedWitnessMixing.tla",
+    "cfg": "SharedWitnessMixing.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S5-B",
+    "spec": "SharedWitnessMixing.tla",
+    "cfg": "SharedWitnessMixing_distinct.cfg",
+    "workers": "auto",
+    "verdict": "PASS",
+    "violated_invariant": ""
+  },
+  {
+    "run_id": "S5-C",
+    "spec": "SharedWitnessMixing.tla",
+    "cfg": "SharedWitnessMixing_probe.cfg",
+    "workers": "1",
+    "verdict": "VIOLATED",
+    "violated_invariant": "DistinctOnsetTrajectory"
+  }
+]

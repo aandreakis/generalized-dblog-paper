@@ -1,0 +1,23 @@
+<runner checksum line for the staged input directory omitted; run "python3 reproduce.py checksums" from the archive root>
+Isabelle scratch directory: <verification-scratch>
+Isabelle command: isabelle build -b -j 8 -o quick_and_dirty=false -d dual_write_layer0 -d formal -d dblog_framework/framework_core DBLog_Virtual_Cuts DBLog_Framework_Core
+Building HOL-Library ...
+Finished HOL-Library (0:01:47 elapsed time, 0:08:37 cpu time, factor 4.80)
+Building DBLog_Framework_Core ...
+Building Dual_Write_Layer0 ...
+Preparing Dual_Write_Layer0/document ...
+Finished Dual_Write_Layer0/document (0:00:02 elapsed time)
+Document at "<verification-scratch>"
+Finished Dual_Write_Layer0 (0:00:06 elapsed time, 0:00:11 cpu time, factor 1.73)
+Building DBLog_Virtual_Cuts ...
+Preparing DBLog_Virtual_Cuts/document ...
+Finished DBLog_Virtual_Cuts/document (0:00:09 elapsed time)
+Document at "<verification-scratch>"
+Finished DBLog_Virtual_Cuts (0:00:13 elapsed time, 0:00:53 cpu time, factor 3.87)
+Preparing DBLog_Framework_Core/document ...
+Finished DBLog_Framework_Core/document (0:00:04 elapsed time)
+Document at "<verification-scratch>"
+Finished DBLog_Framework_Core (0:02:24 elapsed time, 0:03:01 cpu time, factor 1.26)
+0:04:23 elapsed time, 0:12:43 cpu time, factor 2.89
+
+ISABELLE_EXIT_0

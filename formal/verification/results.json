@@ -1,0 +1,235 @@
+{
+  "verified_date": "2026-09-07",
+  "isabelle_exit": 0,
+  "lean_exit": 0,
+  "tlc_jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+  "runs": [
+    {
+      "run_id": "S1-A",
+      "spec": "WatermarkLoop.tla",
+      "cfg": "WatermarkLoop.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 12844167,
+      "depth": 22
+    },
+    {
+      "run_id": "S1-B",
+      "spec": "WatermarkLoop.tla",
+      "cfg": "WatermarkLoop_torn_green.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 4785,
+      "depth": 12
+    },
+    {
+      "run_id": "S1-C",
+      "spec": "WatermarkLoop.tla",
+      "cfg": "WatermarkLoop_torn.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "SharedInstantExists",
+      "distinct": 1988,
+      "depth": 7
+    },
+    {
+      "run_id": "S2-A",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 25606379,
+      "depth": 18
+    },
+    {
+      "run_id": "S2-B",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_torn_green.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 3297,
+      "depth": 10
+    },
+    {
+      "run_id": "S2-C",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_torn.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "SharedInstantExists",
+      "distinct": 1816,
+      "depth": 7
+    },
+    {
+      "run_id": "S2-D0",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_alinear_green.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 898,
+      "depth": 9
+    },
+    {
+      "run_id": "S2-D1",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_alinear_oracle.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "OracleFaithful",
+      "distinct": 247,
+      "depth": 5
+    },
+    {
+      "run_id": "S2-D2",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_alinear_replay.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 988,
+      "depth": 9
+    },
+    {
+      "run_id": "S2-D3",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_alinear_replay_wide.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 33205754,
+      "depth": 18
+    },
+    {
+      "run_id": "S2-E1",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_uncommitted_premise.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "CommittedOnly",
+      "distinct": 14,
+      "depth": 2
+    },
+    {
+      "run_id": "S2-E2",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_uncommitted_oracle.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "OracleFaithful",
+      "distinct": 550,
+      "depth": 6
+    },
+    {
+      "run_id": "S2-E3",
+      "spec": "ReadOnlyBrackets.tla",
+      "cfg": "ReadOnlyBrackets_uncommitted_replay.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 1159,
+      "depth": 9
+    },
+    {
+      "run_id": "S3-A",
+      "spec": "ParallelChunks.tla",
+      "cfg": "ParallelChunks.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 73690264,
+      "depth": 19
+    },
+    {
+      "run_id": "S3-B",
+      "spec": "ParallelChunks.tla",
+      "cfg": "ParallelChunks_prop3_green.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 829,
+      "depth": 10
+    },
+    {
+      "run_id": "S3-C",
+      "spec": "ParallelChunks.tla",
+      "cfg": "ParallelChunks_noclausea.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "FrontierExact",
+      "distinct": 768,
+      "depth": 10
+    },
+    {
+      "run_id": "S3-D",
+      "spec": "ParallelChunks.tla",
+      "cfg": "ParallelChunks_pointsplice_green.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 3314,
+      "depth": 10
+    },
+    {
+      "run_id": "S3-E",
+      "spec": "ParallelChunks.tla",
+      "cfg": "ParallelChunks_pointsplice.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "EarlyOnsetExists",
+      "distinct": 2496,
+      "depth": 9
+    },
+    {
+      "run_id": "S4-A",
+      "spec": "DumpSplice.tla",
+      "cfg": "DumpSplice.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 5049,
+      "depth": 9
+    },
+    {
+      "run_id": "S4-B",
+      "spec": "DumpSplice.tla",
+      "cfg": "DumpSplice_degraded.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 23373,
+      "depth": 9
+    },
+    {
+      "run_id": "S4-C",
+      "spec": "DumpSplice.tla",
+      "cfg": "DumpSplice_wrongpoint.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "FrontierExact",
+      "distinct": 796,
+      "depth": 7
+    },
+    {
+      "run_id": "S4-D",
+      "spec": "DumpSplice.tla",
+      "cfg": "DumpSplice_degraded_probe.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "WidenedTrajectory",
+      "distinct": 34,
+      "depth": 3
+    },
+    {
+      "run_id": "S5-A",
+      "spec": "SharedWitnessMixing.tla",
+      "cfg": "SharedWitnessMixing.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 31674,
+      "depth": 6
+    },
+    {
+      "run_id": "S5-B",
+      "spec": "SharedWitnessMixing.tla",
+      "cfg": "SharedWitnessMixing_distinct.cfg",
+      "verdict": "PASS",
+      "violated_invariant": "",
+      "distinct": 80248,
+      "depth": 6
+    },
+    {
+      "run_id": "S5-C",
+      "spec": "SharedWitnessMixing.tla",
+      "cfg": "SharedWitnessMixing_probe.cfg",
+      "verdict": "VIOLATED",
+      "violated_invariant": "DistinctOnsetTrajectory",
+      "distinct": 645,
+      "depth": 4
+    }
+  ],
+  "isabelle_build_record": "isabelle-build.json",
+  "log_note": "Public log copies redact local paths, and the Isabelle copy replaces the runner checksum line for its staged input directory with a marker. The archive-root SHA256SUMS covers these public copies."
+}

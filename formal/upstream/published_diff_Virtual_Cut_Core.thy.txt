@@ -1,0 +1,74 @@
+--- DBLog_Virtual_Cuts-2.1/Virtual_Cut_Core.thy
++++ formal/Virtual_Cut_Core.thy
+@@ -4,7 +4,7 @@
+ *)
+ 
+ theory Virtual_Cut_Core
+-  imports DBLog_Run_Core
++  imports DBLog_Run_Core Dual_Write_Layer0.Virtual_Cut_State
+ begin
+ 
+ section \<open>Certificate-free virtual-cut core (carrier-independent)\<close>
+@@ -19,14 +19,10 @@
+ 
+   Two groups of material live here:
+ 
+-    \<^item> @{text core_virtual_cut_state} --- the source-side extensional-equality
+-        predicate. Its body is identical to the public
+-        @{text Virtual_Cut.virtual_cut_state}; the name is kept \<^emph>\<open>distinct\<close>
+-        so a theory that imports both this core subtree and the
+-        @{text Virtual_Cut} subtree (e.g. an interpretation witness) is
+-        unambiguous. The public-to-core bridge
+-        (@{text "virtual_cut_state = core_virtual_cut_state"}) is the lemma
+-        @{text virtual_cut_state_eq_core} in @{text Virtual_Cut}.
++    \<^item> @{text virtual_cut_state} --- the source-side extensional-equality
++        predicate imported from the shared Layer-0 entry. This theory no
++        longer owns a duplicate core predicate; Layer 2, Layer 3, DBLog, and
++        Dual-Write refer to the same HOL constant.
+ 
+     \<^item> the pure Layer 4 anchor / table-scope definitions and the outside-scope
+         bridge lemmas. They
+@@ -38,27 +34,18 @@
+         coupling to either state predicate.
+ \<close>
+ 
+-subsection \<open>Virtual cut state (factored core predicate)\<close>
++subsection \<open>Virtual cut state (shared Layer-0 predicate)\<close>
+ 
+ text \<open>
+-  @{text core_virtual_cut_state} is the source-side extensional-equality core
+-  that both Layer 2 (over runs) and the Layer 3 cert-side @{text virtual_cut}
+-  reduce to:
+-
+-  @{text "core_virtual_cut_state b0 \<sigma> K f H
++  @{text virtual_cut_state} is imported from the shared Layer-0 theory
++  @{theory Dual_Write_Layer0.Virtual_Cut_State}. It is the one
++  source-side extensional-equality core that both Layer 2 (over runs) and the
++  Layer 3 cert-side @{text virtual_cut} reduce to:
++
++  @{text "virtual_cut_state b0 \<sigma> K f H
+             \<longleftrightarrow>
+           restrict (Apply \<sigma>) K = restrict (Src b0 H f) K"}.
+-
+-  The body is identical to @{text Virtual_Cut.virtual_cut_state}; only the home
+-  theory (and hence the qualified name) differs.
+ \<close>
+-
+-definition core_virtual_cut_state
+-  :: "('k \<rightharpoonup> 'v) \<Rightarrow> ('k, 'v) replay_event list \<Rightarrow> 'k set
+-      \<Rightarrow> frontier \<Rightarrow> ('k, 'v) src_history \<Rightarrow> bool"
+-where
+-  "core_virtual_cut_state b0 \<sigma> K f H \<longleftrightarrow>
+-     restrict (Apply \<sigma>) K = restrict (Src b0 H f) K"
+ 
+ subsection \<open>Anchor and table-scope definitions\<close>
+ 
+@@ -200,7 +187,7 @@
+   The scoped-equality bridge, stated over the \<^emph>\<open>raw\<close> restricted equality
+   (predicate-agnostic). The cert-side / run-side callers each unfold their own
+   state predicate (@{text Virtual_Cut.virtual_cut_state} resp.\
+-  @{text core_virtual_cut_state}) to the raw form before applying it.
++  @{text virtual_cut_state}) to the raw form before applying it.
+ \<close>
+ 
+ lemma whole_table_equality_from_scoped_equality:

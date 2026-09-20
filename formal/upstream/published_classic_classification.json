@@ -1,0 +1,207 @@
+{
+  "method": "Strip nested comments and nested Isabelle documentation cartouches; normalize whitespace and shared session qualifications; explicitly account for predicate relocation/name consolidation and redundant compatibility equality. Compare all remaining code exactly.",
+  "results": [
+    {
+      "file": "Continuation.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Continuation_Fixtures_Core.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Continuation_Fixtures_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "DBLog_Cert_Substrate.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "DBLog_Cert_Substrate_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "DBLog_Run.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "DBLog_Run_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "DBLog_Run_Substrate.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "DBLog_Run_Substrate_Layer2.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Fixtures_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Fixtures_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Fixtures_Model.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Virtual_Cut_Example_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Virtual_Cut_Example_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Virtual_Cut_Example_Model.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Witness_Topics_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Witness_Topics_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Witness_Topics_Model.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Witnesses_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Witnesses_Inst.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer01_Witnesses_Model.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer2_Fixtures_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer2_Fixtures_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer3_Defect_Regressions.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer3_Fixtures_Core.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer3_Fixtures_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer3_Witnesses_Inst.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer4_Fixtures_Core.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer4_Fixtures_Inst.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer4_Whole_Table.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Layer4_Witnesses_Core.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Public_Checker_Witness.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Replay.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Scope.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Source_Coordinates.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Source_History.thy",
+      "status": "byte-identical",
+      "specific_changes": []
+    },
+    {
+      "file": "Virtual_Cut.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": [
+        "duplicate public predicate removed in favor of identical shared predicate",
+        "compatibility equality renamed and reduced to reflexivity; its use removed from one simp proof"
+      ]
+    },
+    {
+      "file": "Virtual_Cut_Core.thy",
+      "status": "code-identical after documented relocation/renaming",
+      "specific_changes": [
+        "predicate definition relocated unchanged to dual_write_layer0/Virtual_Cut_State.thy; new import"
+      ]
+    }
+  ],
+  "predicate_bodies": {
+    "Virtual_Cut.thy": "virtual_cut_state b0 \\<sigma> K f H \\<longleftrightarrow> restrict (Apply \\<sigma>) K = restrict (Src b0 H f) K",
+    "Virtual_Cut_Core.thy": "virtual_cut_state b0 \\<sigma> K f H \\<longleftrightarrow> restrict (Apply \\<sigma>) K = restrict (Src b0 H f) K",
+    "current shared": "virtual_cut_state b0 \\<sigma> K f H \\<longleftrightarrow> restrict (Apply \\<sigma>) K = restrict (Src b0 H f) K"
+  },
+  "predicate_bodies_identical": true,
+  "unclassified": []
+}

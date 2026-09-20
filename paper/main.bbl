@@ -1,0 +1,413 @@
+\begin{thebibliography}{45}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Andreakis and Papapanagiotou(2020)]{andreakis2020dblog}
+Andreas Andreakis and Ioannis Papapanagiotou.
+\newblock {DBLog}: A watermark based change-data-capture framework, 2020.
+\newblock URL \url{https://arxiv.org/abs/2010.12597v1}.
+\newblock arXiv:2010.12597v1.
+
+\bibitem[Andreakis and Papapanagiotou(2019)]{dblog_netflix_blog}
+Andreas Andreakis and Ioannis Papapanagiotou.
+\newblock {DBLog}: A generic change-data-capture framework.
+\newblock Netflix Tech Blog,
+  \url{https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b},
+  December 2019.
+\newblock Accessed 8 September 2026.
+
+\bibitem[Pechanec(2021)]{debezium_incremental_snapshots}
+Jiri Pechanec.
+\newblock Incremental snapshots in {Debezium}.
+\newblock Debezium Blog,
+  \url{https://debezium.io/blog/2021/10/07/incremental-snapshots/}, October
+  2021.
+\newblock Published 7 October 2021. Accessed 8 September 2026.
+
+\bibitem[{Debezium Community}(2026{\natexlab{a}})]{debezium_mysql_connector}
+{Debezium Community}.
+\newblock Debezium connector for {MySQL}.
+\newblock Debezium 3.6 reference documentation,
+  \url{https://debezium.io/documentation/reference/3.6/connectors/mysql.html},
+  2026{\natexlab{a}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Apache Flink CDC Community}(2026{\natexlab{a}})]{flinkcdc_mysql}
+{Apache Flink CDC Community}.
+\newblock {MySQL} {CDC} connector.
+\newblock Apache Flink CDC 3.6.0 documentation,
+  \url{https://nightlies.apache.org/flink/flink-cdc-docs-release-3.6/docs/connectors/flink-sources/mysql-cdc/},
+  2026{\natexlab{a}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[Andreakis(2026{\natexlab{a}})]{andreakis2026virtualcuts}
+Andreas Andreakis.
+\newblock A theoretical study of {DBLog}: Certified virtual cuts for a
+  snapshot-equivalent replay of live databases, 2026{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2605.31475v4}.
+\newblock arXiv:2605.31475v4.
+
+\bibitem[{MariaDB}(n.d{\natexlab{a}})]{mariadb_consistent_snapshot}
+{MariaDB}.
+\newblock {START TRANSACTION ... WITH CONSISTENT SNAPSHOT}.
+\newblock MariaDB Server documentation,
+  \url{https://mariadb.com/docs/server/ha-and-performance/standard-replication/enhancements-for-start-transaction-with-consistent-snapshot},
+  n.d{\natexlab{a}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Percona LLC}(2025)]{percona_consistent_snapshot}
+{Percona LLC}.
+\newblock Start transaction with consistent snapshot.
+\newblock Percona Server for MySQL 8.0 documentation,
+  \url{https://docs.percona.com/percona-server/8.0/start-transaction-with-consistent-snapshot.html},
+  2025.
+\newblock Documentation revision dated November 27, 2025. Accessed 8 September
+  2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{a}})]{postgres_protocol_replication}
+{PostgreSQL Global Development Group}.
+\newblock Streaming replication protocol.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/protocol-replication.html#PROTOCOL-REPLICATION-CREATE-REPLICATION-SLOT},
+  2026{\natexlab{a}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{MariaDB}(n.d{\natexlab{b}})]{mariadb_binlog_status_vars}
+{MariaDB}.
+\newblock Replication and binary log status variables.
+\newblock MariaDB Server documentation,
+  \url{https://mariadb.com/docs/server/ha-and-performance/standard-replication/replication-and-binary-log-status-variables#binlog_snapshot_file},
+  n.d{\natexlab{b}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Debezium
+  Community}(2026{\natexlab{b}})]{debezium_postgresql_connector}
+{Debezium Community}.
+\newblock Debezium connector for {PostgreSQL}.
+\newblock Debezium 3.6 reference documentation,
+  \url{https://debezium.io/documentation/reference/3.6/connectors/postgresql.html},
+  2026{\natexlab{b}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Oracle Corporation}(2024)]{oracle_goldengate_heartbeat}
+{Oracle Corporation}.
+\newblock Monitoring {Oracle GoldenGate} processing: Using automatic heartbeat
+  tables to monitor.
+\newblock Administering Oracle GoldenGate 19c (19.1.0), E98073-06, Section
+  16.4,
+  \url{https://docs.oracle.com/en/middleware/goldengate/core/19.1/admin/monitoring-oracle-goldengate-processing.html#GUID-59E61274-BDDE-4D4B-9681-ED0BC39E9FCF},
+  2024.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Debezium Community}(2026{\natexlab{c}})]{debezium_signalling}
+{Debezium Community}.
+\newblock Sending signals to a {Debezium} connector.
+\newblock Debezium 3.6 reference documentation,
+  \url{https://debezium.io/documentation/reference/3.6/configuration/signalling.html},
+  2026{\natexlab{c}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Debezium Community}(2026{\natexlab{d}})]{debezium_mariadb_connector}
+{Debezium Community}.
+\newblock Debezium connector for {MariaDB}.
+\newblock Debezium 3.6 reference documentation,
+  \url{https://debezium.io/documentation/reference/3.6/connectors/mariadb.html},
+  2026{\natexlab{d}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Oracle Corporation}(2026{\natexlab{a}})]{mysql_mysqldump}
+{Oracle Corporation}.
+\newblock mysqldump --- a database backup program.
+\newblock MySQL 8.4 Reference Manual,
+  \url{https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html},
+  2026{\natexlab{a}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[Andreakis(2026{\natexlab{b}})]{andreakis2026dualwrite}
+Andreas Andreakis.
+\newblock Machine-checked dual-write recovery from a committed log,
+  2026{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2608.00501v4}.
+\newblock arXiv:2608.00501v4.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{b}})]{postgres_logical_replication}
+{PostgreSQL Global Development Group}.
+\newblock Logical replication architecture.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/logical-replication-architecture.html#LOGICAL-REPLICATION-SNAPSHOT},
+  2026{\natexlab{b}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Debezium
+  Community}(2026{\natexlab{e}})]{debezium_signal_delete_source}
+{Debezium Community}.
+\newblock Signal dispatch and window-close sources for the
+  \texttt{insert\_delete} strategy.
+\newblock Debezium source at tag \texttt{v3.6.1.Final},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-common/src/main/java/io/debezium/pipeline/EventDispatcher.java#L313-L344}{EventDispatcher},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-common/src/main/java/io/debezium/pipeline/signal/SignalRecord.java#L46-L61}{SignalRecord},
+  and
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-common/src/main/java/io/debezium/pipeline/source/snapshot/incremental/DeleteWindowCloser.java#L21-L42}{DeleteWindowCloser},
+  2026{\natexlab{e}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[Galieva(2022)]{debezium_readonly_blog}
+Kate Galieva.
+\newblock Read-only incremental snapshots for {MySQL}.
+\newblock Debezium Blog,
+  \url{https://debezium.io/blog/2022/04/07/read-only-incremental-snapshots/},
+  April 2022.
+\newblock Published 7 April 2022. Accessed 14 September 2026.
+
+\bibitem[{Debezium
+  Community}(2026{\natexlab{f}})]{debezium_mysql_readonly_source}
+{Debezium Community}.
+\newblock {MySQL} and binlog read-only incremental snapshot sources and common
+  lifecycle.
+\newblock Debezium source at tag \texttt{v3.6.1.Final},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-mysql/src/main/java/io/debezium/connector/mysql/MySqlReadOnlyIncrementalSnapshotChangeEventSource.java}{MySQL
+  implementation},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-mysql/src/main/java/io/debezium/connector/mysql/MySqlReadOnlyIncrementalSnapshotContext.java#L37-L75}{MySQL
+  window context},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-binlog/src/main/java/io/debezium/connector/binlog/BinlogReadOnlyIncrementalSnapshotChangeEventSource.java}{shared
+  binlog implementation},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-common/src/main/java/io/debezium/pipeline/source/snapshot/incremental/AbstractIncrementalSnapshotChangeEventSource.java#L151-L160}{snapshot
+  lifecycle},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-common/src/main/java/io/debezium/pipeline/source/snapshot/incremental/AbstractIncrementalSnapshotContext.java#L162-L164}{lifecycle
+  context}, 2026{\natexlab{f}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Oracle Corporation}(2026{\natexlab{b}})]{mysql_gtid_lifecycle}
+{Oracle Corporation}.
+\newblock {GTID} life cycle.
+\newblock MySQL 8.4 Reference Manual,
+  \url{https://dev.mysql.com/doc/refman/8.4/en/replication-gtids-lifecycle.html},
+  2026{\natexlab{b}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{MariaDB}(n.d{\natexlab{c}})]{mariadb_gtid}
+{MariaDB}.
+\newblock Global transaction {ID}.
+\newblock MariaDB Server documentation,
+  \url{https://mariadb.com/docs/server/ha-and-performance/standard-replication/gtid#gtid_binlog_pos},
+  n.d{\natexlab{c}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Debezium
+  Community}(2026{\natexlab{g}})]{debezium_mariadb_readonly_source}
+{Debezium Community}.
+\newblock {MariaDB} read-only incremental snapshot source and context.
+\newblock Debezium source at tag \texttt{v3.6.1.Final},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-mariadb/src/main/java/io/debezium/connector/mariadb/MariaDbReadOnlyIncrementalSnapshotChangeEventSource.java#L42-L56}{MariaDB
+  source} and
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-mariadb/src/main/java/io/debezium/connector/mariadb/MariaDbReadOnlyIncrementalSnapshotContext.java#L104-L122}{context},
+  2026{\natexlab{g}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{MariaDB}(n.d{\natexlab{d}})]{mariadb_parallel_replication}
+{MariaDB}.
+\newblock Parallel replication.
+\newblock MariaDB Server documentation,
+  \url{https://mariadb.com/docs/server/ha-and-performance/standard-replication/parallel-replication#out-of-order-parallel-replication},
+  n.d{\natexlab{d}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Apache Flink CDC
+  Community}(2026{\natexlab{b}})]{flinkcdc_source_code}
+{Apache Flink CDC Community}.
+\newblock {MySQL} snapshot, backfill, handoff, and row-kind source paths.
+\newblock Apache Flink CDC source at tag \texttt{release-3.6.0},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-mysql-cdc/src/main/java/org/apache/flink/cdc/connectors/mysql/debezium/task/MySqlSnapshotSplitReadTask.java#L153-L199}{snapshot
+  task},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-mysql-cdc/src/main/java/org/apache/flink/cdc/connectors/mysql/debezium/reader/SnapshotSplitReader.java#L313-L377}{snapshot
+  buffer},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-mysql-cdc/src/main/java/org/apache/flink/cdc/connectors/mysql/source/utils/RecordUtils.java#L84-L221}{record
+  normalization},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-mysql-cdc/src/main/java/org/apache/flink/cdc/connectors/mysql/source/assigners/MySqlHybridSplitAssigner.java#L207-L253}{handoff},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-mysql-cdc/src/main/java/org/apache/flink/cdc/connectors/mysql/debezium/reader/BinlogSplitReader.java#L289-L342}{stream
+  gate},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-debezium/src/main/java/org/apache/flink/cdc/debezium/table/RowDataDebeziumDeserializeSchema.java#L124-L174}{row-kind
+  mapping},
+  \href{https://github.com/apache/flink-cdc/blob/bf160337ff558d70302e7884f68937611873117e/flink-cdc-connect/flink-cdc-source-connectors/flink-connector-debezium/src/main/java/org/apache/flink/cdc/debezium/table/AppendMetadataCollector.java#L53-L72}{append-only
+  mapping}, 2026{\natexlab{b}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{MariaDB}(n.d{\natexlab{e}})]{mariadb_snapshot_coordinates}
+{MariaDB}.
+\newblock {MyRocks START TRANSACTION WITH CONSISTENT SNAPSHOT}.
+\newblock MariaDB documentation,
+  \url{https://mariadb.com/docs/server/server-usage/storage-engines/myrocks/myrocks-and-start-transaction-with-consistent-snapshot},
+  n.d{\natexlab{e}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{c}})]{postgres_logicaldecoding}
+{PostgreSQL Global Development Group}.
+\newblock Logical decoding concepts.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/logicaldecoding-explanation.html#LOGICALDECODING-EXPLANATION-EXPORTED-SNAPSHOTS},
+  2026{\natexlab{c}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{MariaDB Server Contributors}(2025)]{mariadb_snapshot_session_source}
+{MariaDB Server Contributors}.
+\newblock {MariaDB} snapshot position capture, retrieval, and transaction
+  reset.
+\newblock MariaDB Server source at tag \texttt{mariadb-11.4.8},
+  \href{https://github.com/MariaDB/server/blob/c4ed889b74ed95fa8b4eaf96610d4c1480b346a4/sql/log.cc#L6463-L6477}{snapshot
+  capture},
+  \href{https://github.com/MariaDB/server/blob/c4ed889b74ed95fa8b4eaf96610d4c1480b346a4/sql/log.cc#L12726-L12757}{status
+  retrieval}, and
+  \href{https://github.com/MariaDB/server/blob/c4ed889b74ed95fa8b4eaf96610d4c1480b346a4/sql/log.cc#L384-L394}{transaction
+  reset}, 2025.
+\newblock Source revision dated July 28, 2025. Accessed 8 September 2026.
+
+\bibitem[{Oracle Corporation}(2026{\natexlab{c}})]{oracle_flashback}
+{Oracle Corporation}.
+\newblock Using {Oracle Flashback} technology.
+\newblock Oracle Database Development Guide, 19c, E96334-10, Chapter 20,
+  \url{https://docs.oracle.com/en/database/oracle/oracle-database/19/adfns/flashback.html},
+  2026{\natexlab{c}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{MariaDB}(n.d{\natexlab{f}})]{mariadb_dump}
+{MariaDB}.
+\newblock mariadb-dump.
+\newblock MariaDB documentation (rolling page, no version banner),
+  \url{https://mariadb.com/docs/server/clients-and-utilities/backup-restore-and-import-clients/mariadb-dump},
+  n.d{\natexlab{f}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{d}})]{postgres_pgdump}
+{PostgreSQL Global Development Group}.
+\newblock pg\_dump.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/app-pgdump.html}, 2026{\natexlab{d}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Oracle Corporation}(2026{\natexlab{d}})]{mysql_consistent_read}
+{Oracle Corporation}.
+\newblock Consistent nonlocking reads.
+\newblock MySQL 8.4 Reference Manual,
+  \url{https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html},
+  2026{\natexlab{d}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{e}})]{postgres_transaction_iso}
+{PostgreSQL Global Development Group}.
+\newblock Transaction isolation.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/transaction-iso.html#XACT-READ-COMMITTED},
+  2026{\natexlab{e}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{Microsoft Corporation}(2026)]{mssql_locking_guide}
+{Microsoft Corporation}.
+\newblock Transaction locking and row versioning guide.
+\newblock SQL Server documentation, Microsoft Learn,
+  \url{https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide?view=sql-server-ver17},
+  2026.
+\newblock Accessed 8 September 2026.
+
+\bibitem[Andreakis(2026{\natexlab{c}})]{andreakis2026virtualcuts_artifact}
+Andreas Andreakis.
+\newblock Isabelle/{HOL} formal development for ``{A} theoretical study of
+  {DBLog}'', 2026{\natexlab{c}}.
+\newblock URL \url{https://doi.org/10.5281/zenodo.21732790}.
+\newblock Software, version 2.1, BSD 3-Clause license. Concept DOI
+  10.5281/zenodo.20389696.
+
+\bibitem[Andreakis(2026{\natexlab{d}})]{framework_artifact}
+Andreas Andreakis.
+\newblock Formal development for ``{Generalized DBLog}: A verified contract for
+  interleaving copied rows with a change log'', 2026{\natexlab{d}}.
+\newblock URL \url{https://doi.org/10.5281/zenodo.22643866}.
+\newblock Software, version 1.0, BSD 3-Clause license.
+
+\bibitem[Mohan et~al.(1992)Mohan, Haderle, Lindsay, Pirahesh, and
+  Schwarz]{mohan1992aries}
+C.~Mohan, Don Haderle, Bruce Lindsay, Hamid Pirahesh, and Peter Schwarz.
+\newblock {ARIES}: A transaction recovery method supporting fine-granularity
+  locking and partial rollbacks using write-ahead logging.
+\newblock \emph{ACM Transactions on Database Systems}, 17\penalty0
+  (1):\penalty0 94--162, 1992.
+\newblock \doi{10.1145/128765.128770}.
+
+\bibitem[Noach(2016)]{ghost_docs}
+Shlomi Noach.
+\newblock gh-ost: {GitHub}'s online schema migration tool for {MySQL}.
+\newblock The GitHub Blog,
+  \url{https://github.blog/news-insights/company-news/gh-ost-github-s-online-migration-tool-for-mysql/},
+  August 2016.
+\newblock Published 1 August 2016. Accessed 8 September 2026.
+
+\bibitem[Nichter and Schwartz(2026)]{ptosc_docs}
+Daniel Nichter and Baron Schwartz.
+\newblock pt-online-schema-change.
+\newblock Percona Toolkit documentation,
+  \url{https://docs.percona.com/percona-toolkit/pt-online-schema-change.html#description},
+  2026.
+\newblock Percona Toolkit 3.7.1-4.
+  \href{https://github.com/percona/percona-toolkit/blob/36165fcaafe7e9aff4a2667828e76c22fca1069a/bin/pt-online-schema-change}{Versioned
+  documentation source}. Accessed 8 September 2026.
+
+\bibitem[{The Kubernetes Authors}(2026)]{k8s_api_concepts}
+{The Kubernetes Authors}.
+\newblock Kubernetes {API} concepts: Efficient detection of changes.
+\newblock
+  \url{https://v1-36.docs.kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes},
+  2026.
+\newblock Kubernetes v1.36 documentation. Page updated March 30, 2026. Accessed
+  8 September 2026.
+
+\bibitem[{The Vitess Authors}(2025)]{vitess_vreplication}
+{The Vitess Authors}.
+\newblock {VReplication}: Life of a stream.
+\newblock Vitess 24.0 documentation,
+  \url{https://vitess.io/docs/24.0/reference/vreplication/internal/life-of-a-stream/#copy},
+  2025.
+\newblock Page updated October 29, 2025. Accessed 8 September 2026.
+
+\bibitem[Chen et~al.(2015)Chen, Ziegler, Chajed, Chlipala, Kaashoek, and
+  Zeldovich]{chen2015fscq}
+Haogang Chen, Daniel Ziegler, Tej Chajed, Adam Chlipala, M.~Frans Kaashoek, and
+  Nickolai Zeldovich.
+\newblock Using crash {Hoare} logic for certifying the {FSCQ} file system.
+\newblock In \emph{Proceedings of the 25th Symposium on Operating Systems
+  Principles (SOSP)}, pages 18--37, 2015.
+\newblock \doi{10.1145/2815400.2815402}.
+
+\bibitem[Hawblitzel et~al.(2015)Hawblitzel, Howell, Kapritsos, Lorch, Parno,
+  Roberts, Setty, and Zill]{hawblitzel2015ironfleet}
+Chris Hawblitzel, Jon Howell, Manos Kapritsos, Jacob~R. Lorch, Bryan Parno,
+  Michael~L. Roberts, Srinath Setty, and Brian Zill.
+\newblock {IronFleet}: Proving practical distributed systems correct.
+\newblock In \emph{Proceedings of the 25th Symposium on Operating Systems
+  Principles (SOSP)}, pages 1--17, 2015.
+\newblock \doi{10.1145/2815400.2815428}.
+
+\bibitem[Newcombe et~al.(2015)Newcombe, Rath, Zhang, Munteanu, Brooker, and
+  Deardeuff]{newcombe2015amazon}
+Chris Newcombe, Tim Rath, Fan Zhang, Bogdan Munteanu, Marc Brooker, and Michael
+  Deardeuff.
+\newblock How {Amazon Web Services} uses formal methods.
+\newblock \emph{Communications of the ACM}, 58\penalty0 (4):\penalty0 66--73,
+  2015.
+\newblock \doi{10.1145/2699417}.
+
+\bibitem[Crooks et~al.(2017)Crooks, Pu, Alvisi, and Clement]{crooks2017seeing}
+Natacha Crooks, Youer Pu, Lorenzo Alvisi, and Allen Clement.
+\newblock Seeing is believing: A client-centric specification of database
+  isolation.
+\newblock In \emph{Proceedings of the ACM Symposium on Principles of
+  Distributed Computing (PODC)}, pages 73--82, 2017.
+\newblock \doi{10.1145/3087801.3087802}.
+
+\end{thebibliography}

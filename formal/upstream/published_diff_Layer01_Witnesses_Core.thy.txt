@@ -1,0 +1,20 @@
+--- DBLog_Virtual_Cuts-2.1/Layer01_Witnesses_Core.thy
++++ formal/Layer01_Witnesses_Core.thy
+@@ -4,7 +4,7 @@
+ *)
+ 
+ theory Layer01_Witnesses_Core
+-  imports Source_Coordinates
++  imports Dual_Write_Layer0.Source_Coordinates
+ begin
+ 
+ section \<open>Minimum-viable wellformed-run witness data (carrier-independent)\<close>
+@@ -20,7 +20,7 @@
+   @{const Src} / @{const latest_src_event} computation lemmas on the witness
+   data, and the source-history wellformedness @{text wf_h_w}. None of this
+   mentions a run or chunk carrier, so the theory imports only
+-  @{theory DBLog_Virtual_Cuts.Source_Coordinates} (home of the witness
++  @{theory Dual_Write_Layer0.Source_Coordinates} (home of the witness
+   coordinates @{const c1_w} / @{const c2_w} and their order lemmas).
+ \<close>
+ 

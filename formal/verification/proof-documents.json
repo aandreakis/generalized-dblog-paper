@@ -1,0 +1,23 @@
+{
+  "build_record": "isabelle-build.json",
+  "documents": [
+    {
+      "session_directory": "dblog_framework/framework_core",
+      "file": "../proof_documents/Generalized_DBLog_Proof_Document.pdf",
+      "sha256": "1a1be74cf35e3fe73b3a9b8dbfb131e07632a3629fee320a31ab3b2d72f9751d",
+      "pages": 101
+    },
+    {
+      "session_directory": "formal",
+      "file": "../proof_documents/Classic_DBLog_Proof_Document.pdf",
+      "sha256": "6ae504cbe039df789fd542310fcacefd0e4ab1cf83d30350a5e4336b5e6c2de2",
+      "pages": 313
+    },
+    {
+      "session_directory": "dual_write_layer0",
+      "file": "../proof_documents/Shared_Base_Proof_Document.pdf",
+      "sha256": "00cce88f61dc7274945fefcb52012e206c9c2333c182e55ed1052ce81bb3fdb0",
+      "pages": 22
+    }
+  ]
+}

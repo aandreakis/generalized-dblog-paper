@@ -1,0 +1,27 @@
+--- DBLog_Virtual_Cuts-2.1/DBLog_Run_Core.thy
++++ formal/DBLog_Run_Core.thy
+@@ -4,7 +4,12 @@
+ *)
+ 
+ theory DBLog_Run_Core
+-  imports Source_History Replay Scope "HOL-Library.Multiset" "HOL-Library.Sublist"
++  imports
++    Dual_Write_Layer0.Source_History
++    Dual_Write_Layer0.Replay
++    Dual_Write_Layer0.Scope
++    "HOL-Library.Multiset"
++    "HOL-Library.Sublist"
+ begin
+ 
+ section \<open>Carrier-independent Layer 0/1 core: chunk-read records and the canonical clean prefix\<close>
+@@ -918,8 +923,8 @@
+   in the @{text Refresh} case (where
+   @{text "\<sigma> ! i_max = Refresh k m c_read"}).
+   Lives here, with the other carrier-independent helpers,
+-  rather than in @{file Replay.thy}
+-  because that proof is its only consumer; relocation to @{file Replay.thy}
++  rather than in @{theory Dual_Write_Layer0.Replay}
++  because that proof is its only consumer; relocation to that shared theory
+   is reasonable if a second consumer ever materializes.
+ \<close>
+ 

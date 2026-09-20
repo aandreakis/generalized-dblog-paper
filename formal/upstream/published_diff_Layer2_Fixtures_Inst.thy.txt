@@ -1,0 +1,35 @@
+--- DBLog_Virtual_Cuts-2.1/Layer2_Fixtures_Inst.thy
++++ formal/Layer2_Fixtures_Inst.thy
+@@ -66,28 +66,28 @@
+                      (wit_cscope ()) (wit_cfrontier ()) H_w"
+   unfolding virtual_cut_state_def
+   using wit_model.wellformed_run_implies_virtual_cut
+-          [OF wit_model_wellformed, unfolded core_virtual_cut_state_def] .
++          [OF wit_model_wellformed, unfolded virtual_cut_state_def] .
+ 
+ theorem layer2_worked_example_virtual_cut_state_constructed:
+   "virtual_cut_state b0_ex (ex_model.clean_prefix_of ())
+                      (cscope_of ()) (cfrontier_of ()) H_ex"
+   unfolding virtual_cut_state_def
+   using ex_model.wellformed_run_implies_virtual_cut
+-          [OF ex_model_wellformed, unfolded core_virtual_cut_state_def] .
++          [OF ex_model_wellformed, unfolded virtual_cut_state_def] .
+ 
+ theorem layer2_topic1_virtual_cut_state_constructed:
+   "virtual_cut_state b0_t1 (t1_model.clean_prefix_of ())
+                      (t1_cscope ()) (t1_cfrontier ()) H_t1"
+   unfolding virtual_cut_state_def
+   using t1_model.wellformed_run_implies_virtual_cut
+-          [OF t1_model_wellformed, unfolded core_virtual_cut_state_def] .
++          [OF t1_model_wellformed, unfolded virtual_cut_state_def] .
+ 
+ theorem layer2_topic2_virtual_cut_state_constructed:
+   "virtual_cut_state b0_t2 (t2_model.clean_prefix_of ())
+                      (t2_cscope ()) (t2_cfrontier ()) H_t2"
+   unfolding virtual_cut_state_def
+   using t2_model.wellformed_run_implies_virtual_cut
+-          [OF t2_model_wellformed, unfolded core_virtual_cut_state_def] .
++          [OF t2_model_wellformed, unfolded virtual_cut_state_def] .
+ 
+ 
+ subsection \<open>WF-clause rejection rows over the constructed Layer 1 fixtures\<close>

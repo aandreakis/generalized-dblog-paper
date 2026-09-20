@@ -1,0 +1,11 @@
+--- DBLog_Virtual_Cuts-2.1/Continuation_Fixtures_Inst.thy
++++ formal/Continuation_Fixtures_Inst.thy
+@@ -94,7 +94,7 @@
+ 
+ lemma cext_extended_cert_virtual_cut:
+   "cext.virtual_cut (\<lambda>_. None) CExt l7_H_cov"
+-  unfolding cext.virtual_cut_def core_virtual_cut_state_def
++  unfolding cext.virtual_cut_def virtual_cut_state_def
+ proof (rule l7_canon_continuation[OF l7_wf_cov, unfolded virtual_cut_state_def])
+   show "cdc_segment_between l7_H_cov (l7f_scope CExt) c0
+           (l7f_frontier CExt) (l7f_clean_prefix CExt)"

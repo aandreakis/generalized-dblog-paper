@@ -1,0 +1,20 @@
+--- DBLog_Virtual_Cuts-2.1/Layer01_Fixtures_Core.thy
++++ formal/Layer01_Fixtures_Core.thy
+@@ -4,7 +4,7 @@
+ *)
+ 
+ theory Layer01_Fixtures_Core
+-  imports Source_Coordinates
++  imports Dual_Write_Layer0.Source_Coordinates
+ begin
+ 
+ section \<open>Carrier-independent Layer 0/1 fixture data\<close>
+@@ -17,7 +17,7 @@
+   and the @{const latest_src_event} / @{const Src} computation lemmas (plus
+   @{text wf_h_es}) they depend on. None of this mentions a run or chunk
+   carrier, so this theory imports only
+-  @{theory DBLog_Virtual_Cuts.Source_Coordinates}, where the fixture source
++  @{theory Dual_Write_Layer0.Source_Coordinates}, where the fixture source
+   coordinates and their order lemmas also live.
+ \<close>
+ 

@@ -1,0 +1,11 @@
+--- DBLog_Virtual_Cuts-2.1/Layer01_Virtual_Cut_Example_Inst.thy
++++ formal/Layer01_Virtual_Cut_Example_Inst.thy
+@@ -33,7 +33,7 @@
+   locale context).
+ 
+   The example source coordinates @{text "ec1..ec4"} are @{const coord_of_nat}
+-  definitions from @{theory DBLog_Virtual_Cuts.Source_Coordinates}, with their
++  definitions from @{theory Dual_Write_Layer0.Source_Coordinates}, with their
+   order facts proved there; the carrier-independent example data
+   (@{const b0_ex}, @{const H_ex}, the @{const Src} / @{const latest_src_event}
+   computation lemmas, @{thm [source] wf_h_ex}, and further coordinate order

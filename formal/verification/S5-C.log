@@ -1,0 +1,74 @@
+{"run_id": "S5-C", "cfg": "SharedWitnessMixing_probe.cfg", "spec": "SharedWitnessMixing.tla", "command": "java -cp <local-toolchain-path> tlc2.TLC -workers 1 -cleanup -config SharedWitnessMixing_probe.cfg SharedWitnessMixing.tla", "cwd": "<verification-scratch>", "workers": "1", "started_utc": "2026-09-07T02:58:39.885826+00:00", "exit_code": 12, "elapsed_seconds": 1.268, "finished_utc": "2026-09-07T02:58:03.075236+00:00", "log_sha256": "46724a6890ee5e86f9f9d2b633dacc3d2361d33a33daaae4eeaf7456758314d2", "verdict": "VIOLATED", "violated_invariant": "DistinctOnsetTrajectory", "generated": 1415, "distinct": 998, "left_on_queue": 857, "depth": 5, "expected": {"verdict": "VIOLATED", "violated_invariant": "DistinctOnsetTrajectory", "generated": 877, "distinct": 645, "depth": 4}, "matches_previous": false, "complete_green": false, "expected_negative": true, "retry_reason": "Prior lane metadata used a decorated single-worker value that the first wrapper misread as auto. Rerun the negative gate with its required one worker. Initial outcome preserved separately."}
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Warning: Please run the Java VM which executes TLC with a throughput optimized garbage collector by passing the "-XX:+UseParallelGC" property.
+(Use the -nowarning option to disable this warning.)
+Running breadth-first search Model-Checking with fp 18 and seed 7331663883727694086 with 1 worker on 12 cores with 24576MB heap and 64MB offheap memory [pid: 49434] (Mac OS X 26.6.2 aarch64, Homebrew 21.0.12.1 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module SharedWitnessMixing
+Starting... (2026-09-07 10:58:40)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-09-07 10:58:40.
+Error: Invariant DistinctOnsetTrajectory is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ nData = 0
+/\ hi1 = 0
+/\ R1 = <<NULL, NULL>>
+/\ w1 = 0
+/\ R2 = (3 :> NULL)
+/\ w2 = 0
+/\ lo1 = 0
+/\ r1done = FALSE
+/\ r2done = FALSE
+/\ log = <<>>
+
+State 2: <Commit line 120, col 3 to line 123, col 59 of module SharedWitnessMixing>
+/\ nData = 1
+/\ hi1 = 0
+/\ R1 = <<NULL, NULL>>
+/\ w1 = 0
+/\ R2 = (3 :> NULL)
+/\ w2 = 0
+/\ lo1 = 0
+/\ r1done = FALSE
+/\ r2done = FALSE
+/\ log = <<[key |-> 1, img |-> 1]>>
+
+State 3: <ReadUnit1 line 130, col 3 to line 135, col 45 of module SharedWitnessMixing>
+/\ nData = 1
+/\ hi1 = 1
+/\ R1 = <<1, NULL>>
+/\ w1 = 1
+/\ R2 = (3 :> NULL)
+/\ w2 = 0
+/\ lo1 = 0
+/\ r1done = TRUE
+/\ r2done = FALSE
+/\ log = <<[key |-> 1, img |-> 1]>>
+
+State 4: <ReadUnit2 line 142, col 3 to line 152, col 55 of module SharedWitnessMixing>
+/\ nData = 1
+/\ hi1 = 1
+/\ R1 = <<1, NULL>>
+/\ w1 = 1
+/\ R2 = (3 :> NULL)
+/\ w2 = 0
+/\ lo1 = 0
+/\ r1done = TRUE
+/\ r2done = TRUE
+/\ log = <<[key |-> 1, img |-> 1]>>
+
+877 states generated, 645 distinct states found, 575 states left on queue.
+The depth of the complete state graph search is 4.
+The average outdegree of the complete state graph is 9 (minimum is 0, the maximum 15 and the 95th percentile is 15).
+Finished in 00s at (2026-09-07 10:58:40)
+
+TLC_EXIT_12

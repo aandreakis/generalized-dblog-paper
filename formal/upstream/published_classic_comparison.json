@@ -1,0 +1,277 @@
+{
+  "record": "https://zenodo.org/records/21732790",
+  "archive_sha256": "8045e06568bfea1a0947be45694c38ce87f02101a6b09ba4c8c8ad6361f6e2f3",
+  "zenodo_checksum": "md5:ce28969df017fc91222e5209e19ebc0a",
+  "archive_md5": "md5:ce28969df017fc91222e5209e19ebc0a",
+  "files": [
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Continuation.thy",
+      "local": "formal/Continuation.thy",
+      "published_sha256": "7a3941cc58249612c9ddb73f9ac17c4b5c2c2475ec6b495121ab2652539b0436",
+      "local_sha256": "7a3941cc58249612c9ddb73f9ac17c4b5c2c2475ec6b495121ab2652539b0436",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Continuation_Fixtures_Core.thy",
+      "local": "formal/Continuation_Fixtures_Core.thy",
+      "published_sha256": "7814ad3f6f81ec02a15d15e1649fc1cd777a4fd44cefac9d627fbea49b54ae31",
+      "local_sha256": "7814ad3f6f81ec02a15d15e1649fc1cd777a4fd44cefac9d627fbea49b54ae31",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Continuation_Fixtures_Inst.thy",
+      "local": "formal/Continuation_Fixtures_Inst.thy",
+      "published_sha256": "0e6c6dd408ab5550da4cedc7cc487affc72e399cb460e49b065491b6cecd2dca",
+      "local_sha256": "13ca4e76aefae3edb2e333e98cbd36fb3476919642496287312bb2a37314fd0e",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/DBLog_Cert_Substrate.thy",
+      "local": "formal/DBLog_Cert_Substrate.thy",
+      "published_sha256": "1f77a21b7ad8608f2edc9cfeb68f53f2cf2303dd8e49f982069272e962fb3571",
+      "local_sha256": "6184a19a4df6fd12143ebaf2baf0a29802dd4abc15948995c97836032da5d955",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/DBLog_Cert_Substrate_Inst.thy",
+      "local": "formal/DBLog_Cert_Substrate_Inst.thy",
+      "published_sha256": "4c793dfe2f72472063acfa5f3c7efdabe67118f5c0fb56b5b57423499bc92343",
+      "local_sha256": "f8b40d4ae58132bc2b6148aedc81aa63f70d7894e484faad7929cd29e2e60262",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/DBLog_Run.thy",
+      "local": "formal/DBLog_Run.thy",
+      "published_sha256": "81ef47f047f26ac4a6591a341478ca08b0b669e7d76e91d6f7a53bc1b4d32cd6",
+      "local_sha256": "81ef47f047f26ac4a6591a341478ca08b0b669e7d76e91d6f7a53bc1b4d32cd6",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/DBLog_Run_Core.thy",
+      "local": "formal/DBLog_Run_Core.thy",
+      "published_sha256": "24de25257a04629d8d71a4ba3ce31a7bc4c1b7fc643cb3bf902b56adeeccedd2",
+      "local_sha256": "adb8ccac7c0100718e3b01e63d3f239794ed6ca31a9e92ec2530a5222f8131a7",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/DBLog_Run_Substrate.thy",
+      "local": "formal/DBLog_Run_Substrate.thy",
+      "published_sha256": "7bc71b48c0ad8c902acfb99d904db55b32b48f8e55c26a57cbcb381c0e7462ed",
+      "local_sha256": "7bc71b48c0ad8c902acfb99d904db55b32b48f8e55c26a57cbcb381c0e7462ed",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/DBLog_Run_Substrate_Layer2.thy",
+      "local": "formal/DBLog_Run_Substrate_Layer2.thy",
+      "published_sha256": "99e1c5d582a9cd32b0656fda920000f8dea05afacc81f34344bcce6be04cc758",
+      "local_sha256": "a344ebfac5a7313c841f4dfcb01bb4d17c93b458ae01e22578699262fcba7fea",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Fixtures_Core.thy",
+      "local": "formal/Layer01_Fixtures_Core.thy",
+      "published_sha256": "d868567ccaf2e6dcff5866b0acc035ef7312627d3cc47513bda3c559e9a5012a",
+      "local_sha256": "2abb8c4e85b428b4b950762dee08d1397d7ecd169c579efe0955aa05a345957e",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Fixtures_Inst.thy",
+      "local": "formal/Layer01_Fixtures_Inst.thy",
+      "published_sha256": "3c7d164fa943e96b828799373296e7ba44362d4cfba28dc9e7b4893434ef475f",
+      "local_sha256": "dd5ef4b09a28fae91e4613c108fdba8a720035ead35d669f4d090bf6eb1b8c08",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Fixtures_Model.thy",
+      "local": "formal/Layer01_Fixtures_Model.thy",
+      "published_sha256": "80afe358c79932d92dcf12a6971ed9436e455f6a660561a29cdad9cbd5777bfe",
+      "local_sha256": "52a9e31e3d35d1f783442e4b77a9636257941e99bc3f41157dc8ba374b6a8cfc",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Virtual_Cut_Example_Core.thy",
+      "local": "formal/Layer01_Virtual_Cut_Example_Core.thy",
+      "published_sha256": "424730627dc4756196b1cc11f19b63f1ee2699b958b09363aa348cf7e696dbf4",
+      "local_sha256": "b3ee1800d06da6fbd689f4fbbe8a0b9e38ddbf7d5d443eb0731a7d14b5c3c5da",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Virtual_Cut_Example_Inst.thy",
+      "local": "formal/Layer01_Virtual_Cut_Example_Inst.thy",
+      "published_sha256": "0c936d79ba7a95b4932e3c9123692b900ef6f994dd967daf20c168643e87ac7f",
+      "local_sha256": "567fd056ce01d1a2ac4e4bd3bd0f363c7da855fb5e3e8ee2d6d87753b5a3623b",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Virtual_Cut_Example_Model.thy",
+      "local": "formal/Layer01_Virtual_Cut_Example_Model.thy",
+      "published_sha256": "2ebcc5ce6541b4f24253606307236c9dda88ab6498f1258a8f5c3bbe1e168ad2",
+      "local_sha256": "2ebcc5ce6541b4f24253606307236c9dda88ab6498f1258a8f5c3bbe1e168ad2",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Witness_Topics_Core.thy",
+      "local": "formal/Layer01_Witness_Topics_Core.thy",
+      "published_sha256": "8fc3790deed9b806732e341cbdfa981a58157facff73ead7e50f69127258f76a",
+      "local_sha256": "35d3c1d6635843ef9d09c6eef72e23ee1ff2313cb3b2e2922e43ed873d4737e1",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Witness_Topics_Inst.thy",
+      "local": "formal/Layer01_Witness_Topics_Inst.thy",
+      "published_sha256": "15e0194ee5f71615ed5ab661ea86ee863bb725df73753f50a773c7a67f9d3bcb",
+      "local_sha256": "9e9439fd6bdbc0bf0aa004acbe0485dbec2c65f0ec68b19aa5bf31400f89eed2",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Witness_Topics_Model.thy",
+      "local": "formal/Layer01_Witness_Topics_Model.thy",
+      "published_sha256": "61dc02f71e52ec60747127db1e3043304e536cfe70c57b8481397ec1aef042ad",
+      "local_sha256": "61dc02f71e52ec60747127db1e3043304e536cfe70c57b8481397ec1aef042ad",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Witnesses_Core.thy",
+      "local": "formal/Layer01_Witnesses_Core.thy",
+      "published_sha256": "dfd216ae37628cc579792d425b2750062f1673ad4348db9a607dff4ddb88ee3c",
+      "local_sha256": "5f71f3e3d50ff1b086c8d7599c2b96cff5bc557c5ed9ff716111326c2f2aa7eb",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Witnesses_Inst.thy",
+      "local": "formal/Layer01_Witnesses_Inst.thy",
+      "published_sha256": "a1c0c5aa6d49e1b947060ca29a3f62faed5116a56a1a5a5f3249a641d572bc23",
+      "local_sha256": "a1c0c5aa6d49e1b947060ca29a3f62faed5116a56a1a5a5f3249a641d572bc23",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer01_Witnesses_Model.thy",
+      "local": "formal/Layer01_Witnesses_Model.thy",
+      "published_sha256": "118d7948e115ae08bc689613507e15fe032234e6bbdc6ff706f8409d35c50a9e",
+      "local_sha256": "118d7948e115ae08bc689613507e15fe032234e6bbdc6ff706f8409d35c50a9e",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer2_Fixtures_Core.thy",
+      "local": "formal/Layer2_Fixtures_Core.thy",
+      "published_sha256": "a120b58b777af775cd2460b5d42bcdf78b5503e33f95c25702885e3331e0a14b",
+      "local_sha256": "110fa92475dfe76caf1c30afacb6fed33212b76229857ae72dc0ae93f78363b9",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer2_Fixtures_Inst.thy",
+      "local": "formal/Layer2_Fixtures_Inst.thy",
+      "published_sha256": "34401d86df5f7ee09aa3b184228a1a2f34e2f96d9d91f7635c3f26239d903dfe",
+      "local_sha256": "c9355da647607bc68419aae242ea8eb9bc92d10818f707daf6ca694b4f8d3673",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer3_Defect_Regressions.thy",
+      "local": "formal/Layer3_Defect_Regressions.thy",
+      "published_sha256": "c70501730fbbc91a2a37fa7c33be3f30507da7e36f348ebaf912f5e8c1134678",
+      "local_sha256": "c70501730fbbc91a2a37fa7c33be3f30507da7e36f348ebaf912f5e8c1134678",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer3_Fixtures_Core.thy",
+      "local": "formal/Layer3_Fixtures_Core.thy",
+      "published_sha256": "deeb15249be20f017d685310c69adf3ce7ab73fdb8893c9ac6ea0188ddfae902",
+      "local_sha256": "deeb15249be20f017d685310c69adf3ce7ab73fdb8893c9ac6ea0188ddfae902",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer3_Fixtures_Inst.thy",
+      "local": "formal/Layer3_Fixtures_Inst.thy",
+      "published_sha256": "da5b6841b81e8ec0567e8a499d9230cf3cc0ac1086a5bd575b2dde49b0315961",
+      "local_sha256": "8884498bcdd51ca5f22debcbd60edb5fc1dc19fa6addb2ad3ad9f3b221ba76b1",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer3_Witnesses_Inst.thy",
+      "local": "formal/Layer3_Witnesses_Inst.thy",
+      "published_sha256": "b71ada60dc531cd37aa5ea8792099521cdff11e37ac333a5ef72252f34ef5868",
+      "local_sha256": "b71ada60dc531cd37aa5ea8792099521cdff11e37ac333a5ef72252f34ef5868",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer4_Fixtures_Core.thy",
+      "local": "formal/Layer4_Fixtures_Core.thy",
+      "published_sha256": "9a1749d5052896f37017f075a4e294ddeab913e3ca910372ad59187cea03d680",
+      "local_sha256": "9a1749d5052896f37017f075a4e294ddeab913e3ca910372ad59187cea03d680",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer4_Fixtures_Inst.thy",
+      "local": "formal/Layer4_Fixtures_Inst.thy",
+      "published_sha256": "bb79128314382d57f8b35af329db7452a614f5d03188e0f70e7f09eba9e923cd",
+      "local_sha256": "798fc0945449ed5d6dbec099d2a5e60a9e21c99f6a07660cbec988f2f63e629f",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer4_Whole_Table.thy",
+      "local": "formal/Layer4_Whole_Table.thy",
+      "published_sha256": "7efd92df3fb2ae5e4b98ae19a76bf7a0c16f13bc1d4a7d82be5292211f6514f9",
+      "local_sha256": "7efd92df3fb2ae5e4b98ae19a76bf7a0c16f13bc1d4a7d82be5292211f6514f9",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Layer4_Witnesses_Core.thy",
+      "local": "formal/Layer4_Witnesses_Core.thy",
+      "published_sha256": "aedd4d53d61ee704239dba3a06cc4f63cd67a674787012cee5c5ee5bf6a4584b",
+      "local_sha256": "aedd4d53d61ee704239dba3a06cc4f63cd67a674787012cee5c5ee5bf6a4584b",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Public_Checker_Witness.thy",
+      "local": "formal/Public_Checker_Witness.thy",
+      "published_sha256": "fac5b129afb84e7cd80565f3058ed7080368ea1d1581dcc14f59cdc63cdc9eb9",
+      "local_sha256": "fac5b129afb84e7cd80565f3058ed7080368ea1d1581dcc14f59cdc63cdc9eb9",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Replay.thy",
+      "local": "dual_write_layer0/Replay.thy",
+      "published_sha256": "8f16c76554567440261b18cbbd4185314584530de685a6e867d890233a8d85f4",
+      "local_sha256": "8f16c76554567440261b18cbbd4185314584530de685a6e867d890233a8d85f4",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Scope.thy",
+      "local": "dual_write_layer0/Scope.thy",
+      "published_sha256": "91321e44d0abce35a8803ac1266e8f7569708639bb1ac2edd6cf2ad40656cf50",
+      "local_sha256": "91321e44d0abce35a8803ac1266e8f7569708639bb1ac2edd6cf2ad40656cf50",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Source_Coordinates.thy",
+      "local": "dual_write_layer0/Source_Coordinates.thy",
+      "published_sha256": "8d07cf677512bea4bfc5d9f047e376de6ce779cf074053baf0384af3c3175a60",
+      "local_sha256": "8d07cf677512bea4bfc5d9f047e376de6ce779cf074053baf0384af3c3175a60",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Source_History.thy",
+      "local": "dual_write_layer0/Source_History.thy",
+      "published_sha256": "363e0b72bca58b7d60b359a62e2690f57bc986c8b4daa6da78456d0b1d0c7073",
+      "local_sha256": "363e0b72bca58b7d60b359a62e2690f57bc986c8b4daa6da78456d0b1d0c7073",
+      "identical": true
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Virtual_Cut.thy",
+      "local": "formal/Virtual_Cut.thy",
+      "published_sha256": "94c8e4b5da8f11bb9f208437205d64df895dae873c395f23179db85dc76e2099",
+      "local_sha256": "4b47e1caf0bbcaa3d8c8abbcabc3103f8454673ca31214a32c932d8e0cfa1ea5",
+      "identical": false
+    },
+    {
+      "published": "DBLog_Virtual_Cuts-2.1/Virtual_Cut_Core.thy",
+      "local": "formal/Virtual_Cut_Core.thy",
+      "published_sha256": "77844d27fc905cb7756276633e024f67fd100ac05266cba42ad38f01f0dc8286",
+      "local_sha256": "d8dbabc7609dcb1aa154ee65c5d51ecef00abdd32ad60b34e14fb64f371bf370",
+      "identical": false
+    }
+  ],
+  "checksum_match": true,
+  "identical": 19,
+  "different": 19
+}

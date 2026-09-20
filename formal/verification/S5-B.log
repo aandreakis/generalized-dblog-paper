@@ -1,0 +1,29 @@
+{"run_id": "S5-B", "cfg": "SharedWitnessMixing_distinct.cfg", "spec": "SharedWitnessMixing.tla", "command": "java -cp <local-toolchain-path> tlc2.TLC -workers auto -cleanup -config SharedWitnessMixing_distinct.cfg SharedWitnessMixing.tla", "cwd": "<verification-scratch>", "workers": "auto", "started_utc": "2026-09-07T02:57:58.874240+00:00"}
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Warning: Please run the Java VM which executes TLC with a throughput optimized garbage collector by passing the "-XX:+UseParallelGC" property.
+(Use the -nowarning option to disable this warning.)
+Running breadth-first search Model-Checking with fp 94 and seed -5396819386116321083 with 12 workers on 12 cores with 24576MB heap and 64MB offheap memory [pid: 49001] (Mac OS X 26.6.2 aarch64, Homebrew 21.0.12.1 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module SharedWitnessMixing
+Starting... (2026-09-07 10:57:59)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-09-07 10:57:59.
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 4.1E-10
+  based on the actual fingerprints:  val = 1.3E-11
+173579 states generated, 80248 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 6.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 24 and the 95th percentile is 4).
+Finished in 02s at (2026-09-07 10:58:01)
+
+TLC_EXIT_0

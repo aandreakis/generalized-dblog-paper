@@ -1,0 +1,11 @@
+--- DBLog_Virtual_Cuts-2.1/Layer01_Witness_Topics_Inst.thy
++++ formal/Layer01_Witness_Topics_Inst.thy
+@@ -38,7 +38,7 @@
+   an in-locale lemma.
+ 
+   The Topic 1 source coordinate @{const ct1} is a @{const coord_of_nat}
+-  definition from @{theory DBLog_Virtual_Cuts.Source_Coordinates}, with its
++  definition from @{theory Dual_Write_Layer0.Source_Coordinates}, with its
+   order facts proved there; Topic 2 uses only the base coordinate @{const c0}.
+ \<close>
+ 

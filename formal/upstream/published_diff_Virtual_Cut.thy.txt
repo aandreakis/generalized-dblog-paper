@@ -1,0 +1,86 @@
+--- DBLog_Virtual_Cuts-2.1/Virtual_Cut.thy
++++ formal/Virtual_Cut.thy
+@@ -4,7 +4,11 @@
+ *)
+ 
+ theory Virtual_Cut
+-  imports Source_History Replay Scope DBLog_Run_Substrate_Layer2
++  imports
++    Dual_Write_Layer0.Source_History
++    Dual_Write_Layer0.Replay
++    Dual_Write_Layer0.Scope
++    DBLog_Run_Substrate_Layer2
+ begin
+ 
+ section \<open>Virtual cuts, certificates, and the Layer 2/3 theorems\<close>
+@@ -78,7 +82,7 @@
+ definition clean_prefix :: "('k, 'v) cert \<Rightarrow> ('k, 'v) replay_event list"
+   where "clean_prefix C = c_clean_prefix C"
+ 
+-subsection \<open>Virtual cut state (factored core predicate)\<close>
++subsection \<open>Virtual cut state (shared Layer-0 predicate)\<close>
+ 
+ text \<open>
+   @{text virtual_cut_state} is the source-side extensional-equality
+@@ -106,27 +110,16 @@
+   @{text Src} use.
+ \<close>
+ 
+-definition virtual_cut_state
+-  :: "('k \<rightharpoonup> 'v) \<Rightarrow> ('k, 'v) replay_event list \<Rightarrow> 'k set
+-      \<Rightarrow> frontier \<Rightarrow> ('k, 'v) src_history \<Rightarrow> bool"
+-where
+-  "virtual_cut_state b0 \<sigma> K f H \<longleftrightarrow>
+-     restrict (Apply \<sigma>) K = restrict (Src b0 H f) K"
+-
+-text \<open>
+-  Public-to-core bridge: the public
+-  @{const virtual_cut_state} coincides with
+-  @{const core_virtual_cut_state} of
+-  @{theory DBLog_Virtual_Cuts.Virtual_Cut_Core} (identical bodies; distinct home
+-  theories). The theorem
+-  @{text wellformed_run_implies_virtual_cut} below uses it to rephrase
+-  the substrate locale's @{const core_virtual_cut_state} conclusion as the
+-  public @{const virtual_cut_state}.
+-\<close>
+-
+-lemma virtual_cut_state_eq_core:
+-  "virtual_cut_state b0 \<sigma> K f H = core_virtual_cut_state b0 \<sigma> K f H"
+-  by (simp add: virtual_cut_state_def core_virtual_cut_state_def)
++text \<open>
++  WS4a moves @{const virtual_cut_state} to the shared Layer-0 theory
++  @{theory Dual_Write_Layer0.Virtual_Cut_State}. The compatibility lemma below
++  is now definitional reflexivity; it keeps older proof references stable while
++  both DBLog and Dual-Write use the same imported HOL constant.
++\<close>
++
++lemma virtual_cut_state_eq_shared:
++  "virtual_cut_state b0 \<sigma> K f H = virtual_cut_state b0 \<sigma> K f H"
++  by simp
+ 
+ subsection \<open>Virtual cut (cert-side instance of virtual cut state)\<close>
+ 
+@@ -182,8 +175,8 @@
+   @{thm [source] dblog_run_substrate.wellformed_run_implies_virtual_cut},
+   specialized through the canonical interpretation
+   (@{theory DBLog_Virtual_Cuts.DBLog_Run_Substrate}) and rephrased from its
+-  @{const core_virtual_cut_state} conclusion to the public
+-  @{const virtual_cut_state} via @{thm [source] virtual_cut_state_eq_core}.
++  @{const virtual_cut_state} conclusion to the public
++  @{const virtual_cut_state} via @{thm [source] virtual_cut_state_eq_shared}.
+ 
+   The result is \<^emph>\<open>Conditional\<close> at the paper level, on
+   @{text "wellformed_dblog_run b0 R H"}; the Isabelle theorem is
+@@ -199,10 +192,10 @@
+   from assms have "canonical.wellformed_dblog_run b0 R H"
+     by (simp add: canonical_wellformed_dblog_run_eq)
+   from canonical.wellformed_run_implies_virtual_cut[OF this]
+-  have "core_virtual_cut_state b0 (canonical.clean_prefix_of R) (scope_of R)
++  have "virtual_cut_state b0 (canonical.clean_prefix_of R) (scope_of R)
+                               (frontier_of R) H" .
+   thus ?thesis
+-    by (simp add: canonical_clean_prefix_of_eq virtual_cut_state_eq_core)
++    by (simp add: canonical_clean_prefix_of_eq)
+ qed
+ 
+ subsection \<open>Layer 3 checker substrate: cert/evidence bridge and soundness\<close>

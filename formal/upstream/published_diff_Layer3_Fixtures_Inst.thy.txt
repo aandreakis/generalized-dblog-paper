@@ -1,0 +1,11 @@
+--- DBLog_Virtual_Cuts-2.1/Layer3_Fixtures_Inst.thy
++++ formal/Layer3_Fixtures_Inst.thy
+@@ -299,7 +299,7 @@
+   "cf.virtual_cut b0_ex CEmpty H_ex
+    \<and> l3f_scope CEmpty = {}
+    \<and> l3f_scope CAcc \<noteq> {}"
+-  unfolding cf.virtual_cut_def core_virtual_cut_state_def restrict_def
++  unfolding cf.virtual_cut_def virtual_cut_state_def restrict_def
+   by simp
+ 
+ 

@@ -1,0 +1,20 @@
+--- DBLog_Virtual_Cuts-2.1/Layer2_Fixtures_Core.thy
++++ formal/Layer2_Fixtures_Core.thy
+@@ -4,7 +4,7 @@
+ *)
+ 
+ theory Layer2_Fixtures_Core
+-  imports DBLog_Run_Core Source_Coordinates
++  imports DBLog_Run_Core Dual_Write_Layer0.Source_Coordinates
+ begin
+ 
+ section \<open>Layer 2 canonical-clean-prefix and frontier fixtures\<close>
+@@ -15,7 +15,7 @@
+   @{const canonical_clean_prefix} / @{const cdc_event_replays} /
+   @{const chunk_read_refreshes} constructions of
+   @{theory DBLog_Virtual_Cuts.DBLog_Run_Core} and the source coordinates of
+-  @{theory DBLog_Virtual_Cuts.Source_Coordinates} --- no run/chunk carrier is
++  @{theory Dual_Write_Layer0.Source_Coordinates} --- no run/chunk carrier is
+   involved, so these fixtures have no constructed
+   @{text Layer2_Fixtures_Inst} counterpart.
+ \<close>

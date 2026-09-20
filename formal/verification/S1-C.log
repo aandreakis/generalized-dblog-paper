@@ -1,0 +1,119 @@
+{"run_id": "S1-C", "cfg": "WatermarkLoop_torn.cfg", "spec": "WatermarkLoop.tla", "command": "java -cp <local-toolchain-path> tlc2.TLC -workers 1 -cleanup -config WatermarkLoop_torn.cfg WatermarkLoop.tla", "cwd": "<verification-scratch>", "workers": "1", "started_utc": "2026-09-07T02:47:24.561265+00:00"}
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Warning: Please run the Java VM which executes TLC with a throughput optimized garbage collector by passing the "-XX:+UseParallelGC" property.
+(Use the -nowarning option to disable this warning.)
+Running breadth-first search Model-Checking with fp 45 and seed 4812522255481019694 with 1 worker on 12 cores with 24576MB heap and 64MB offheap memory [pid: 40998] (Mac OS X 26.6.2 aarch64, Homebrew 21.0.12.1 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Parsing file <verification-scratch>
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module WatermarkLoop
+Starting... (2026-09-07 10:47:24)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-09-07 10:47:24.
+Error: Invariant SharedInstantExists is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ phase = "idle"
+/\ lo = <<0>>
+/\ readDone = {}
+/\ R = <<<<NULL, NULL>>>>
+/\ log = <<>>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 0
+/\ hi = <<0>>
+/\ cpos = 0
+
+State 2: <WriteLow line 139, col 3 to line 145, col 51 of module WatermarkLoop>
+/\ phase = "select"
+/\ lo = <<1>>
+/\ readDone = {}
+/\ R = <<<<NULL, NULL>>>>
+/\ log = <<[type |-> "wm"]>>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 0
+/\ hi = <<0>>
+/\ cpos = 0
+
+State 3: <Commit line 131, col 3 to line 134, col 65 of module WatermarkLoop>
+/\ phase = "select"
+/\ lo = <<1>>
+/\ readDone = {}
+/\ R = <<<<NULL, NULL>>>>
+/\ log = <<[type |-> "wm"], [type |-> "data", key |-> 1, img |-> 1]>>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 1
+/\ hi = <<0>>
+/\ cpos = 0
+
+State 4: <Commit line 131, col 3 to line 134, col 65 of module WatermarkLoop>
+/\ phase = "select"
+/\ lo = <<1>>
+/\ readDone = {}
+/\ R = <<<<NULL, NULL>>>>
+/\ log = << [type |-> "wm"],
+   [type |-> "data", key |-> 1, img |-> 1],
+   [type |-> "data", key |-> 2, img |-> 1] >>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 2
+/\ hi = <<0>>
+/\ cpos = 0
+
+State 5: <ReadKey line 153, col 3 to line 159, col 64 of module WatermarkLoop>
+/\ phase = "select"
+/\ lo = <<1>>
+/\ readDone = {1}
+/\ R = <<<<NULL, NULL>>>>
+/\ log = << [type |-> "wm"],
+   [type |-> "data", key |-> 1, img |-> 1],
+   [type |-> "data", key |-> 2, img |-> 1] >>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 2
+/\ hi = <<0>>
+/\ cpos = 0
+
+State 6: <ReadKey line 153, col 3 to line 159, col 64 of module WatermarkLoop>
+/\ phase = "select"
+/\ lo = <<1>>
+/\ readDone = {1, 2}
+/\ R = <<<<NULL, 1>>>>
+/\ log = << [type |-> "wm"],
+   [type |-> "data", key |-> 1, img |-> 1],
+   [type |-> "data", key |-> 2, img |-> 1] >>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 2
+/\ hi = <<0>>
+/\ cpos = 0
+
+State 7: <WriteHigh line 164, col 3 to line 169, col 61 of module WatermarkLoop>
+/\ phase = "closing"
+/\ lo = <<1>>
+/\ readDone = {1, 2}
+/\ R = <<<<NULL, 1>>>>
+/\ log = << [type |-> "wm"],
+   [type |-> "data", key |-> 1, img |-> 1],
+   [type |-> "data", key |-> 2, img |-> 1],
+   [type |-> "wm"] >>
+/\ emission = <<>>
+/\ ci = 1
+/\ nData = 2
+/\ hi = <<4>>
+/\ cpos = 0
+
+4751 states generated, 1988 distinct states found, 797 states left on queue.
+The depth of the complete state graph search is 7.
+The average outdegree of the complete state graph is 2 (minimum is 0, the maximum 10 and the 95th percentile is 4).
+Finished in 00s at (2026-09-07 10:47:25)
+
+TLC_EXIT_12

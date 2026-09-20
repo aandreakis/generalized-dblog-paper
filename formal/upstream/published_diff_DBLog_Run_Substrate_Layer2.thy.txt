@@ -1,0 +1,41 @@
+--- DBLog_Virtual_Cuts-2.1/DBLog_Run_Substrate_Layer2.thy
++++ formal/DBLog_Run_Substrate_Layer2.thy
+@@ -27,7 +27,7 @@
+   @{text wellformed_src_history_coord_mono}) that live in
+   @{text DBLog_Run_Core} and are reused directly via
+   this theory's import. The @{text Virtual_Cut_Core} import supplies the
+-  carrier-independent state predicate @{const core_virtual_cut_state} for the
++  carrier-independent state predicate @{const virtual_cut_state} for the
+   concluding theorem.
+ 
+   Under the canonical
+@@ -1765,14 +1765,14 @@
+ subsection \<open>Layer 2 run-side soundness (locale form of the paper's bridge lemma)\<close>
+ 
+ text \<open>
+-  The run-side instance of @{const core_virtual_cut_state}: a wellformed DBLog
++  The run-side instance of @{const virtual_cut_state}: a wellformed DBLog
+   run replays its clean prefix to the source state at its frontier on its scope.
+   The public theorem @{text "Virtual_Cut.wellformed_run_implies_virtual_cut"}
+   is this theorem specialized through the canonical interpretation (its
+   conclusion uses the public @{text "Virtual_Cut.virtual_cut_state"}, which
+-  coincides with the body-identical @{const core_virtual_cut_state} used
++  coincides with the body-identical @{const virtual_cut_state} used
+   here). Proved by
+-  unfolding @{const core_virtual_cut_state} and applying the locale per-key
++  unfolding @{const virtual_cut_state} and applying the locale per-key
+   equality @{thm [source] clean_prefix_of_per_key_replay_equals_source}
+   pointwise.
+ \<close>
+@@ -1780,9 +1780,9 @@
+ theorem wellformed_run_implies_virtual_cut:
+   assumes "wellformed_dblog_run b0 R H"
+   shows
+-    "core_virtual_cut_state b0 (clean_prefix_of R) (scope_of R)
++    "virtual_cut_state b0 (clean_prefix_of R) (scope_of R)
+                        (frontier_of R) H"
+-  unfolding core_virtual_cut_state_def restrict_def
++  unfolding virtual_cut_state_def restrict_def
+   by (intro ext)
+      (auto intro: clean_prefix_of_per_key_replay_equals_source[OF assms])
+ 
