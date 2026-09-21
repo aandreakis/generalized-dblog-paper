@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository is the public information hub for the paper
+This repository contains the verification artifact and manuscript sources for the paper
 "Generalized DBLog: A Verified Contract for Interleaving Copied Rows with a
 Change Log." It combines:
 
