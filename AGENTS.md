@@ -6,7 +6,7 @@ This repository contains the verification artifact and manuscript sources for th
 "Generalized DBLog: A Verified Contract for Interleaving Copied Rows with a
 Change Log." It combines:
 
-- the exact arXiv v2 paper source and stamped PDF,
+- the exact arXiv v3 paper source and stamped PDF,
 - the complete formal verification artifact archived as version 1.0
   (Isabelle/HOL, Lean 4, TLA+),
 - a short result index and provenance notes.
@@ -20,8 +20,8 @@ This repository is not a software project. There is no application to run and no
 feature work. Your likely task is to read, explain, cite, or check.
 
 **Links.** Paper: [arXiv:2609.08160](https://arxiv.org/abs/2609.08160)
-([v2 abstract](https://arxiv.org/abs/2609.08160v2) ·
-[v2 PDF](https://arxiv.org/pdf/2609.08160v2) ·
+([v3 abstract](https://arxiv.org/abs/2609.08160v3) ·
+[v3 PDF](https://arxiv.org/pdf/2609.08160v3) ·
 [in-repo PDF](paper/generalized-dblog.pdf) ·
 [sources](paper/)). Verification artifact: [formal/](formal/) · archived at Zenodo
 [10.5281/zenodo.22643866](https://doi.org/10.5281/zenodo.22643866) (version 1.0)
@@ -58,7 +58,7 @@ does not check whether a real deployment satisfies those assumptions.
 | Path | Role | Edit policy |
 |---|---|---|
 | <code>formal/</code> | Exact Zenodo 1.0 artifact bytes | Do not edit. Publish a new artifact version instead. |
-| <code>paper/</code> | Exact arXiv v2 source and PDF | Do not edit in place. Refresh only from a new public arXiv version. |
+| <code>paper/</code> | Exact arXiv v3 source and PDF | Do not edit in place. Refresh only from a new public arXiv version. |
 | <code>README.md</code>, <code>docs/</code>, this file | Derived guidance | May be clarified if every claim remains traceable to the frozen sources. |
 | <code>CITATION.cff</code> | Repository citation metadata | Update only when the public paper or artifact record changes. |
 
@@ -156,7 +156,7 @@ pdflatex main
 pdfinfo generalized-dblog.pdf
 ~~~
 
-Expected public PDF: 38 pages, letter size, six figures.
+Expected public PDF: 39 pages, letter size, six figures.
 
 ### Verification artifact
 

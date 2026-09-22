@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{49}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,12 +19,12 @@ Andreas Andreakis and Ioannis Papapanagiotou.
   December 2019.
 \newblock Accessed 8 September 2026.
 
-\bibitem[Pechanec(2021)]{debezium_incremental_snapshots}
+\bibitem[Pechanec(2021{\natexlab{a}})]{debezium_incremental_snapshots}
 Jiri Pechanec.
 \newblock Incremental snapshots in {Debezium}.
 \newblock Debezium Blog,
   \url{https://debezium.io/blog/2021/10/07/incremental-snapshots/}, October
-  2021.
+  2021{\natexlab{a}}.
 \newblock Published 7 October 2021. Accessed 8 September 2026.
 
 \bibitem[{Debezium Community}(2026{\natexlab{a}})]{debezium_mysql_connector}
@@ -47,8 +47,8 @@ Jiri Pechanec.
 Andreas Andreakis.
 \newblock A theoretical study of {DBLog}: Certified virtual cuts for a
   snapshot-equivalent replay of live databases, 2026{\natexlab{a}}.
-\newblock URL \url{https://arxiv.org/abs/2605.31475v4}.
-\newblock arXiv:2605.31475v4.
+\newblock URL \url{https://arxiv.org/abs/2605.31475}.
+\newblock arXiv:2605.31475.
 
 \bibitem[{MariaDB}(n.d{\natexlab{a}})]{mariadb_consistent_snapshot}
 {MariaDB}.
@@ -119,6 +119,15 @@ Andreas Andreakis.
   2026{\natexlab{d}}.
 \newblock Accessed 8 September 2026.
 
+\bibitem[Vitale(2024)]{debezium_ddd8}
+Mario~Fiore Vitale.
+\newblock {DDD-8}: Read-only incremental snapshots for other relational
+  connectors.
+\newblock Debezium design document,
+  \url{https://github.com/debezium/debezium-design-documents/blob/36868a84a08a463d97c28070d1cdcf0d06b557b0/DDD-8.md},
+  2024.
+\newblock Revision of 17 July 2024. Accessed 17 September 2026.
+
 \bibitem[{Oracle Corporation}(2026{\natexlab{a}})]{mysql_mysqldump}
 {Oracle Corporation}.
 \newblock mysqldump --- a database backup program.
@@ -129,10 +138,10 @@ Andreas Andreakis.
 
 \bibitem[Andreakis(2026{\natexlab{b}})]{andreakis2026dualwrite}
 Andreas Andreakis.
-\newblock Machine-checked dual-write recovery from a committed log,
+\newblock Machine-checked dual-write recovery from a commit log,
   2026{\natexlab{b}}.
-\newblock URL \url{https://arxiv.org/abs/2608.00501v4}.
-\newblock arXiv:2608.00501v4.
+\newblock URL \url{https://arxiv.org/abs/2608.00501}.
+\newblock arXiv:2608.00501.
 
 \bibitem[{PostgreSQL Global Development
   Group}(2026{\natexlab{b}})]{postgres_logical_replication}
@@ -155,6 +164,14 @@ Andreas Andreakis.
   \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-common/src/main/java/io/debezium/pipeline/source/snapshot/incremental/DeleteWindowCloser.java#L21-L42}{DeleteWindowCloser},
   2026{\natexlab{e}}.
 \newblock Accessed 8 September 2026.
+
+\bibitem[Pechanec(2021{\natexlab{b}})]{debezium_ddd3}
+Jiri Pechanec.
+\newblock {DDD-3}: Incremental snapshotting.
+\newblock Debezium design document,
+  \url{https://github.com/debezium/debezium-design-documents/blob/b402a6bbdb11398a5bcc75d07e1711f4e11be706/DDD-3.md},
+  2021{\natexlab{b}}.
+\newblock Revision of 7 May 2021. Accessed 17 September 2026.
 
 \bibitem[Galieva(2022)]{debezium_readonly_blog}
 Kate Galieva.
@@ -217,6 +234,29 @@ Kate Galieva.
   n.d{\natexlab{d}}.
 \newblock Accessed 8 September 2026.
 
+\bibitem[{Debezium
+  Community}(2026{\natexlab{h}})]{debezium_postgres_readonly_source}
+{Debezium Community}.
+\newblock {PostgreSQL} read-only incremental snapshot source, window context,
+  and sample parsing.
+\newblock Debezium source at tag \texttt{v3.6.1.Final},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-postgres/src/main/java/io/debezium/connector/postgresql/PostgresReadOnlyIncrementalSnapshotChangeEventSource.java#L73-L231}{PostgreSQL
+  implementation},
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-postgres/src/main/java/io/debezium/connector/postgresql/PostgresReadOnlyIncrementalSnapshotContext.java#L66-L107}{window
+  context}, and
+  \href{https://github.com/debezium/debezium/blob/63371830ceff75437f95c775b91eeeaf55a056c1/debezium-connector-postgres/src/main/java/io/debezium/connector/postgresql/PgSnapshot.java#L56-L76}{sample
+  parsing}, 2026{\natexlab{h}}.
+\newblock Accessed 17 September 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{c}})]{postgres_snapshot_functions}
+{PostgreSQL Global Development Group}.
+\newblock System information functions and operators.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/functions-info.html#FUNCTIONS-INFO-SNAPSHOT},
+  2026{\natexlab{c}}.
+\newblock Accessed 17 September 2026.
+
 \bibitem[{Apache Flink CDC
   Community}(2026{\natexlab{b}})]{flinkcdc_source_code}
 {Apache Flink CDC Community}.
@@ -246,12 +286,12 @@ Kate Galieva.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{c}})]{postgres_logicaldecoding}
+  Group}(2026{\natexlab{d}})]{postgres_logicaldecoding}
 {PostgreSQL Global Development Group}.
 \newblock Logical decoding concepts.
 \newblock PostgreSQL 18 documentation,
   \url{https://www.postgresql.org/docs/18/logicaldecoding-explanation.html#LOGICALDECODING-EXPLANATION-EXPORTED-SNAPSHOTS},
-  2026{\natexlab{c}}.
+  2026{\natexlab{d}}.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{MariaDB Server Contributors}(2025)]{mariadb_snapshot_session_source}
@@ -284,11 +324,11 @@ Kate Galieva.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{d}})]{postgres_pgdump}
+  Group}(2026{\natexlab{e}})]{postgres_pgdump}
 {PostgreSQL Global Development Group}.
 \newblock pg\_dump.
 \newblock PostgreSQL 18 documentation,
-  \url{https://www.postgresql.org/docs/18/app-pgdump.html}, 2026{\natexlab{d}}.
+  \url{https://www.postgresql.org/docs/18/app-pgdump.html}, 2026{\natexlab{e}}.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{Oracle Corporation}(2026{\natexlab{d}})]{mysql_consistent_read}
@@ -300,12 +340,12 @@ Kate Galieva.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{e}})]{postgres_transaction_iso}
+  Group}(2026{\natexlab{f}})]{postgres_transaction_iso}
 {PostgreSQL Global Development Group}.
 \newblock Transaction isolation.
 \newblock PostgreSQL 18 documentation,
   \url{https://www.postgresql.org/docs/18/transaction-iso.html#XACT-READ-COMMITTED},
-  2026{\natexlab{e}}.
+  2026{\natexlab{f}}.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{Microsoft Corporation}(2026)]{mssql_locking_guide}

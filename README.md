@@ -42,7 +42,7 @@ proof.
 
 | Path | What it is |
 |---|---|
-| [paper/](paper/) | Exact arXiv v2 manuscript files, the six figures, and arXiv's stamped PDF. |
+| [paper/](paper/) | Exact arXiv v3 manuscript files, the six figures, and arXiv's stamped PDF. |
 | [formal/](formal/) | The complete verification artifact, **byte-identical to Zenodo version 1.0**. Do not edit. |
 | [formal/README.md](formal/README.md) | The artifact's own README: contents, requirements, reproduction, scope. |
 | [formal/dblog_framework/CROSS_VERIFICATION.md](formal/dblog_framework/CROSS_VERIFICATION.md) | Authoritative map from every numbered object of the paper to Isabelle, Lean and TLC. |
@@ -52,10 +52,10 @@ proof.
 
 ## The paper
 
-- **arXiv v2:** [abstract](https://arxiv.org/abs/2609.08160v2) ·
-  [PDF](https://arxiv.org/pdf/2609.08160v2). 38 pages, 6 figures,
+- **arXiv v3:** [abstract](https://arxiv.org/abs/2609.08160v3) ·
+  [PDF](https://arxiv.org/pdf/2609.08160v3). 39 pages, 6 figures,
   cs.DB + cs.DC + cs.LO, CC BY 4.0.
-- **In this repository:** [generalized-dblog.pdf](paper/generalized-dblog.pdf), arXiv's own stamped v2 PDF.
+- **In this repository:** [generalized-dblog.pdf](paper/generalized-dblog.pdf), arXiv's own stamped v3 PDF.
 - **Build from source.** The bundle carries `main.bbl`, so BibTeX is not
   required for this exact rebuild:
 
@@ -109,8 +109,8 @@ identifier. This repository is a mirror.
 
 | | Paper | Verification artifact |
 |---|---|---|
-| Current | [arXiv:2609.08160v2](https://arxiv.org/abs/2609.08160v2), 14 Sep 2026 | `1.0`, [10.5281/zenodo.22643866](https://doi.org/10.5281/zenodo.22643866), 7 Sep 2026 |
-| Previous | [v1](https://arxiv.org/abs/2609.08160v1), 8 Sep 2026 | none |
+| Current | [arXiv:2609.08160v3](https://arxiv.org/abs/2609.08160v3), 21 Sep 2026 | `1.0`, [10.5281/zenodo.22643866](https://doi.org/10.5281/zenodo.22643866), 7 Sep 2026 |
+| Previous | [v2](https://arxiv.org/abs/2609.08160v2), 14 Sep 2026, and [v1](https://arxiv.org/abs/2609.08160v1), 8 Sep 2026 | none |
 | Always latest | [arXiv:2609.08160](https://arxiv.org/abs/2609.08160) | [10.5281/zenodo.22643865](https://doi.org/10.5281/zenodo.22643865) (concept DOI) |
 
 The arXiv paper cites the Zenodo version DOI `10.5281/zenodo.22643866`, and this

@@ -266,7 +266,7 @@ configured signaling data collection under its
 \texttt{insert\_insert} strategy. Its read-only implementation for MySQL and
 MariaDB instead samples server GTID state without writing those markers
 ~\cite{debezium_signalling,debezium_mysql_connector,
-debezium_mariadb_connector}.
+debezium_mariadb_connector}. For PostgreSQL, it samples the server's transaction snapshot before and after each chunk read~\cite{debezium_ddd8,debezium_postgresql_connector}.
 Flink CDC's documented MySQL protocol brackets chunks in parallel and
 reconciles each chunk with the changes that raced its read. Its documentation
 records that the design is inspired by DBLog~\cite{flinkcdc_mysql}. We
@@ -308,8 +308,8 @@ change events arrive.
 \item We prove that the original watermarked algorithm satisfies the contract,
 and show that other CDC designs fulfill it as well.
 This covers Debezium's signal-table modes (\texttt{insert\_insert} and
-\texttt{insert\_delete}), the Debezium 3.6 MySQL and MariaDB read-only
-variants, the Flink CDC 3.6 MySQL parallel-chunk protocol,
+\texttt{insert\_delete}), the Debezium 3.6 MySQL, MariaDB, and PostgreSQL
+read-only variants, the Flink CDC 3.6 MySQL parallel-chunk protocol,
 log-coordinate-bound reads, and native dumps, establishing that each
 correctly reconstructs source state.
 
@@ -2235,7 +2235,9 @@ Under those conditions, Theorem~\ref{thm:cut} places the plan at T2.
 Theorem~\ref{thm:discard} and Corollary~\ref{cor:emitted-cut} give the
 finite emitted output final source replay. This bridges Debezium's documented mode to the watermarked placement
 under the stated conditions. It does not apply Theorem~\ref{thm:classic}'s
-imported wellformedness to a Debezium release.
+imported wellformedness to a Debezium release. The same argument covers
+the PostgreSQL connector's signal-table
+mode~\cite{debezium_postgresql_connector}.
 
 The \texttt{insert\_delete} strategy uses the same bracket. The opening
 insert supplies the low edge, and deleting that row supplies the high edge.
@@ -2250,20 +2252,25 @@ Enabling the source signaling channel also does not itself establish capture cov
 signaling collection's changes must actually be present and recognizable
 in the consumed history.
 
-\subsection{Debezium read-only capture: MySQL and MariaDB}
+\subsection{Debezium read-only capture: MySQL, MariaDB, and PostgreSQL}
 \label{sec:inst-readonly}
 
 \paragraph{Coordinate construction.}
 
 Debezium's incremental snapshots adapt DBLog's watermark-based
-design~\cite{debezium_incremental_snapshots}. Its MySQL and MariaDB
+design~\cite{debezium_incremental_snapshots,debezium_ddd3}. Its MySQL and MariaDB
 read-only connectors bracket chunks by reading
 server GTID state instead of writing marker rows
-~\cite{debezium_mysql_connector,debezium_mariadb_connector,debezium_readonly_blog}. The
+~\cite{debezium_mysql_connector,debezium_mariadb_connector,debezium_readonly_blog}.
+Its PostgreSQL read-only connector brackets them with two samples of
+the server's transaction snapshot
+~\cite{debezium_ddd8,debezium_postgresql_connector}. The
 trigger can also arrive over a write-free channel
-~\cite{debezium_signalling}. The two servers do not expose the same
+~\cite{debezium_signalling}. The three servers do not expose the same
 coordinate, however. MySQL reports a full executed-GTID set. MariaDB's
 \texttt{GTID\_\allowbreak{}BINLOG\_\allowbreak{}POS} reports one frontier per replication domain.
+PostgreSQL returns a lower transaction-ID bound (\texttt{xmin}), an upper
+bound (\texttt{xmax}), and a list of transactions still in progress.
 We therefore prove the set-oracle construction once, then give
 separate product bridges below.
 
@@ -2476,23 +2483,74 @@ and prefix-preserving translation explicitly
 
 Heartbeat availability remains an operational liveness requirement for detecting that 
 the stream advanced. It does not replace A-linear, S-OBS, or the close
-ordering in A-discard. The PostgreSQL read-only variant brackets with
-transaction identifiers rather than executed sets. Its documentation
-frames the watermarks through the current in-progress transaction
-~\cite{debezium_postgresql_connector}, and the exact low and high
-construction is not documented in a form this proof can model. We
-do not translate that phrase into access to in-progress events or dirty
-state, as both are excluded by the model. We therefore do not place that
-variant. The boundary lies in the available documentation.
+ordering in A-discard.
+
+\paragraph{PostgreSQL bridge.}
+Before and after each chunk read, Debezium 3.6.1.Final calls
+\texttt{pg\_\allowbreak{}current\_\allowbreak{}snapshot()}~\cite{debezium_postgres_readonly_source}. Debezium's
+design document for this mode describes the approach~\cite{debezium_ddd8}.
+The mode requires PostgreSQL 13 or later~\cite{debezium_postgresql_connector}. A sample names a lower bound
+\texttt{xmin}, an upper bound \texttt{xmax}, and the top-level
+transactions between the two that were still in progress. Every
+top-level transaction below \texttt{xmax} and outside that list had
+completed when the sample was taken, while transactions at or above
+\texttt{xmax} were still uncommitted~\cite{postgres_snapshot_functions}. A sample
+therefore describes a set of completed transactions, as an executed-GTID
+set does for MySQL. The IDs of transactions still in progress
+only delimit that set. The construction reads no event of an active
+transaction and no dirty state, so it stays within the committed history
+of \S\ref{sec:setting-store}. A-linear for this server requires each
+sample, projected to the logged transactions, to equal the transaction
+set of one complete prefix of the consumed history.
+Theorem~\ref{thm:oracle} then applies unchanged to membership in the
+high set and not in the low set.
+
+On the data-event path, the connector compares transaction IDs with the
+sampled bounds to open and close the window. The first event whose
+transaction ID is at least the low sample's \texttt{xmin} opens it. While
+the window is open, the connector drops buffered rows whose keys appear
+in the log. The first event whose transaction ID exceeds both sampled
+\texttt{xmax} values closes it. The surviving rows are emitted before
+that event~\cite{debezium_postgres_readonly_source,debezium_signal_delete_source}.
+For this window, A-discard requires the connector to retain the buffer
+until the closing comparison succeeds and allow every event in the
+window to remove a buffered row with the same key.
+
+The comparisons require the streamed transaction IDs and sampled bounds
+to use the same ID space. When the low sample takes effect, it
+must include every transaction the consumer has already processed. As
+with MySQL's \texttt{Executed\_Gtid\_Set}, we assume that each accepted
+sample represents exactly the transactions in one complete prefix of the
+consumed log. This prefix property is not derived from the server's
+commit procedure.
+
+Under these conditions, the connector's window contains the interval
+between the samples. Every event at or beyond the sampled low boundary
+remains to be processed when the low sample takes effect. Its transaction
+is outside the low set, so its ID is at least the low \texttt{xmin}. The
+opening comparison therefore succeeds by the first such event. The low
+edge, immediately before the opening event, lies at or before the
+sampled low boundary. The closing event has an ID greater than both
+sampled \texttt{xmax} values, so its transaction is outside the high set.
+Because that set represents a log prefix, the closing event is after
+that prefix. The high edge, immediately before the closing event,
+therefore lies at or after the sampled high boundary.
+
+Membership in the connector's window is determined by log position. This
+window contains every read coordinate from the sampled bracket. The
+observation frontier must be at or beyond its high edge. Widening the
+bracket preserves O2 (\S\ref{sec:theorem-cut}), and the
+window-discard result applies under the conditions stated above.
 
 \paragraph{Result.}
 Under their respective bridges and the shared assumptions, the
-MySQL set plan and the two analyzed MariaDB cases are T2. The
-empty-difference case uses a point splice, while the empty-buffer,
-nonempty-difference case uses window-discard over the sampled bracket.
+MySQL set plan, the two analyzed MariaDB cases, and the PostgreSQL plan are T2.
+The empty-difference case uses a point splice, the empty-buffer,
+nonempty-difference case uses window-discard over the sampled bracket,
+and the PostgreSQL plan uses window-discard over the connector's window.
 Their actual finite outputs have the same final source replay only under
 the lifecycle, observation, and emission-equivalence conditions of the
-corresponding discipline. Write-freeness is visible in both
+corresponding discipline. Write-freeness is visible in these
 constructions because none of Proposition~\ref{prop:readonly}'s assumptions places a marker event in the log.
 
 \subsection{Flink CDC parallel chunks}\label{sec:inst-parallel}
@@ -3046,7 +3104,8 @@ values supplied by the copy.}
 
 The contract specifies correctness conditions, not operational mechanics.
 Whether a pipeline relies on write-based markers (classic DBLog), sampled
-GTID sets (Debezium read-only), parallel chunk readers (Flink CDC), or
+GTID sets or transaction snapshots (Debezium read-only), parallel chunk
+readers (Flink CDC), or
 exact snapshot coordinates (MariaDB point-splice), they all fulfill the exact
 same contract.
 Operational choices like chunk size, bracket width, write-free
@@ -3227,6 +3286,11 @@ is placed here only for an empty buffer. Populated nonempty cases remain open. &
 Point splice at a confirmed quiet point. Otherwise window-discard with
 no copied survivors. \\
 \addlinespace
+\textbf{Debezium PostgreSQL}\newline\mbox{read-only} &
+Transaction snapshots taken before and after the chunk read. &
+Window-discard over the sampled interval or a wider window determined by
+transaction-ID comparison. \\
+\addlinespace
 \textbf{Flink CDC MySQL}\newline parallel chunks &
 Final logical chunks with low and high binlog offsets. &
 Range-merge each complete window, then gate the live suffix per split. \\
@@ -3300,6 +3364,8 @@ insert marks the low watermark and its subsequent deletion marks the
 high watermark. Debezium converts that deletion into an internal close 
 signal, provided the delete event's before-image retains the primary 
 key~\cite{debezium_signalling,debezium_signal_delete_source,debezium_mysql_connector}.
+The mode and these conditions are the same for the PostgreSQL
+connector~\cite{debezium_postgresql_connector}.
 
 \paragraph{Debezium MySQL}
 Debezium's read-only MySQL mode uses \texttt{Executed\_Gtid\_Set} samples as 
@@ -3336,13 +3402,31 @@ prefix-preserving mapping.
 
 \par\endgroup
 
-For both read-only variants, the connector must record the low coordinate 
-before starting the read and the high coordinate after the read completes. 
-Surviving chunk rows may only be released after processing all row events 
-belonging to the window's final transaction. Out-of-scope events and 
-server heartbeats needed to advance log coordinates must remain observable. 
-Debezium's PostgreSQL read-only incremental snapshot is not mapped here 
-because its documentation does not specify explicit log brackets~\cite{debezium_postgresql_connector}.
+\paragraph{Debezium PostgreSQL}
+Debezium's read-only PostgreSQL mode requires PostgreSQL 13 or later. It
+calls \texttt{pg\_\allowbreak{}current\_\allowbreak{}snapshot()} before
+and after each chunk read, then compares streamed transaction IDs with
+the sampled \texttt{xmin} and \texttt{xmax} boundaries to decide when the window opens and closes
+~\cite{debezium_ddd8,debezium_postgres_readonly_source}.
+
+Each sample must represent a complete prefix of the consumed change
+log. When the low sample takes effect, it must include every transaction
+the connector has already processed. The streamed transaction IDs and
+sampled bounds must also use the same ID space. Under these
+conditions, the connector's window covers the sampled interval and may
+extend beyond it. The mode therefore yields the same base guarantee as
+the MySQL mode.
+
+Both PostgreSQL modes require update events to carry complete row
+images. For tables with large column values, this requires
+\texttt{REPLICA IDENTITY FULL} or an equivalent
+normalization~\cite{debezium_postgresql_connector}.
+
+For all three read-only variants, the connector must record the low coordinate
+before starting the read and the high coordinate after the read completes.
+Surviving chunk rows may only be released after processing all row events
+belonging to the window's final transaction. Out-of-scope events and
+server heartbeats needed to advance log coordinates must remain observable.
 
 \begin{table*}[t]
 \caption{Operational lifecycle guidance outside the copy-to-log proof.}
@@ -3837,12 +3921,17 @@ difference requires further analysis of how the sampled coordinates
 bound the read and how the connector reconciles it with logged changes.
 This limits what the present analysis establishes about the connector.
 
-\paragraph{Debezium PostgreSQL read-only (unmapped).} Debezium's PostgreSQL read-only incremental 
-snapshot protocol is not mapped in this framework. Its documented watermark mechanism relies 
-on in-progress transaction identifiers rather than commit-ordered WAL positions~\cite{debezium_postgresql_connector}. 
-Because our theory reasons strictly about committed log history, in-progress transaction states 
-lie outside the model. This boundary reflects the published connector documentation rather 
-than a defect in the connector release.
+\paragraph{Debezium PostgreSQL}
+As with MySQL's executed-GTID set, we assume that each
+\texttt{pg\_\allowbreak{}current\_\allowbreak{}snapshot()} sample
+represents exactly the transactions in one complete prefix of the
+consumed log (A-linear, \S\ref{sec:inst-readonly}). The low sample must
+include every transaction already processed by the consumer when it takes
+effect. Streamed transaction IDs and sampled snapshot bounds must
+share the same ID space. Chunk reads must be complete (A-read), row
+identities must remain stable (A-scope), and log events must carry full
+row images (S-IMG). The connector must also observe all required log
+events (S-OBS) and follow the window-discard release rules (A-discard).
 
 \paragraph{Shared chunk-read condition.} Official documentation for Debezium and Flink 
 CDC does not fully specify the scan completeness required by A-read (\S\ref{sec:inst-readonly}, \S\ref{sec:inst-parallel}). 
@@ -3898,9 +3987,9 @@ and which must be established by the connector, so a new way of obtaining a
 copy can be assessed against the same contract.
 
 We prove that the original watermarked DBLog protocol, Debezium's signal-table 
-modes, Debezium's MySQL read-only protocol, and Flink CDC's parallel-chunk protocol 
-fulfil this contract. For Debezium's MariaDB read-only protocol, the proof covers 
-the quiet-point and empty-buffer cases, and a populated buffer with a nonempty 
+modes, Debezium's MySQL and PostgreSQL read-only protocols, and Flink CDC's
+parallel-chunk protocol fulfil this contract. For Debezium's MariaDB read-only protocol, the proof covers 
+the quiet-point and empty-buffer cases, and a populated buffer with a nonempty
 GTID difference remains open. The proofs state the source
 guarantees and connector behavior required by each. Native dumps tied to exact 
 log positions and backups whose log position lies within known bounds, satisfy 
@@ -3931,7 +4020,6 @@ authors, the contract provides a concrete basis for checking an existing
 capture path, changing how it operates, or adding a new one while preserving
 the correct treatment of copied rows, updates, and deletes.
 
-\clearpage
 \section*{AI assistance disclosure}
 
 The author used Claude Fable 5, ChatGPT 5.5 and 5.6 Sol, and GPT 6 Astra
