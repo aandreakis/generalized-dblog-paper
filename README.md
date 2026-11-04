@@ -36,7 +36,8 @@ proof.
 [archived artifact (Zenodo)](https://doi.org/10.5281/zenodo.22643866) ·
 [result index](docs/THEOREMS.md) ·
 [provenance](docs/PROVENANCE.md) ·
-[AGENTS.md](AGENTS.md) for AI tools
+[AGENTS.md](AGENTS.md) for AI tools ·
+[talks](talks/README.md)
 
 ## Repository map
 
