@@ -27,10 +27,9 @@ The paper evaluates protocol designs. It does not certify a software release,
 and no running connector is verified. Transport, populated-sink repairs, and
 end-to-end delivery are outside the verified contract.
 
-The complete theory is machine-checked in Isabelle/HOL. Its core is
+The complete theory is machine-checked in Isabelle/HOL, and its core is
 independently verified in Lean 4. Five TLA+ specifications of the protocols are
-examined by bounded model checking. Model checking gives evidence. It is not a
-proof.
+examined by bounded model checking, which gives evidence rather than a proof.
 
 **Links:** [paper on arXiv](https://arxiv.org/abs/2609.08160) ·
 [archived artifact (Zenodo)](https://doi.org/10.5281/zenodo.22643866) ·
@@ -103,8 +102,8 @@ unzip -q artifact.zip
 diff -r Generalized_DBLog_artifact-1.0 formal
 ~~~
 
-No output from `diff` means the trees are identical. Zenodo remains the archival
-identifier. This repository is a mirror.
+No output from `diff` means the trees are identical. The Zenodo record remains
+the archival copy, and this repository mirrors it.
 
 ## Versions and DOIs
 
@@ -167,7 +166,7 @@ GitHub's **Cite this repository** button reads [CITATION.cff](CITATION.cff).
 - **DBLog: A Generic Change-Data-Capture Framework**, Netflix Tech Blog, 2019.
   [Post](https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b).
 
-## Licence
+## License
 
 - **Paper text and figures** (`paper/main.tex`, `paper/main.bbl`,
   `paper/figures/` and reader documentation): Creative Commons Attribution 4.0
@@ -177,7 +176,7 @@ GitHub's **Cite this repository** button reads [CITATION.cff](CITATION.cff).
   stated in its header.
 - **Verification artifact** (`formal/`): BSD 3-Clause. See [LICENSE](LICENSE),
   copied from the archived artifact. Upstream materials inside the artifact
-  retain their own licence notices.
+  retain their own license notices.
 
 ## Author
 

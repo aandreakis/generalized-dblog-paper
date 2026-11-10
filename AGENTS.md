@@ -11,10 +11,10 @@ Change Log." It combines:
   (Isabelle/HOL, Lean 4, TLA+),
 - a short result index and provenance notes.
 
-Human readers should start at <code>README.md</code>, which is short and points
+Human readers should start at `README.md`, which is short and points
 at the sources and their identifiers. This file is the most detailed guide in
 the repository. Use it before answering questions about the results or modifying
-derived documentation.
+the reader guides.
 
 This repository is not a software project. There is no application to run and no
 feature work. Your likely task is to read, explain, cite, or check.
@@ -26,7 +26,7 @@ feature work. Your likely task is to read, explain, cite, or check.
 [sources](paper/)). Verification artifact: [formal/](formal/) · archived at Zenodo
 [10.5281/zenodo.22643866](https://doi.org/10.5281/zenodo.22643866) (version 1.0)
 · [10.5281/zenodo.22643865](https://doi.org/10.5281/zenodo.22643865) (concept
-DOI). Indexes and derived reading:
+DOI). Reader guides and indexes:
 [formal/dblog_framework/CROSS_VERIFICATION.md](formal/dblog_framework/CROSS_VERIFICATION.md) ·
 [formal/README.md](formal/README.md) ·
 [docs/THEOREMS.md](docs/THEOREMS.md) ·
@@ -40,7 +40,7 @@ DOI). Indexes and derived reading:
 When sources differ, use this order:
 
 1. **Isabelle theorem statements and definitions** under
-   <code>formal/dblog_framework/framework_core/</code> and its two dependency
+   `formal/dblog_framework/framework_core/` and its two dependency
    sessions are authoritative for what is proved. The artifact names the
    Isabelle development as the source of truth for the Lean and TLA+ layers.
 2. **formal/dblog_framework/CROSS_VERIFICATION.md** is the authoritative map
@@ -48,7 +48,7 @@ When sources differ, use this order:
 3. **paper/main.tex** is authoritative for the paper's exposition, the theorem
    statements as published, the scope discussion, and the proofs in the paper's
    own notation.
-4. **README.md** and <code>docs/</code> are derived aids for readers.
+4. **README.md** and `docs/` are reader guides and indexes.
 
 The kernel checks the theorem statements under their stated assumptions. It
 does not check whether a real deployment satisfies those assumptions.
@@ -57,10 +57,10 @@ does not check whether a real deployment satisfies those assumptions.
 
 | Path | Role | Edit policy |
 |---|---|---|
-| <code>formal/</code> | Exact Zenodo 1.0 artifact bytes | Do not edit. Publish a new artifact version instead. |
-| <code>paper/</code> | Exact arXiv v4 source and PDF | Do not edit in place. Refresh only from a new public arXiv version. |
-| <code>README.md</code>, <code>docs/</code>, this file | Derived guidance | May be clarified if every claim remains traceable to the frozen sources. |
-| <code>CITATION.cff</code> | Repository citation metadata | Update only when the public paper or artifact record changes. |
+| `formal/` | Exact Zenodo 1.0 artifact bytes | Do not edit. Publish a new artifact version instead. |
+| `paper/` | Exact arXiv v4 source and PDF | Do not edit in place. Refresh only from a new public arXiv version. |
+| `README.md`, `docs/`, this file | Reader guides | May be clarified if every claim remains traceable to the frozen sources. |
+| `CITATION.cff` | Repository citation metadata | Update only when the public paper or artifact record changes. |
 
 ## What the paper studies
 
@@ -86,30 +86,30 @@ artifact's cross-verification table gives this map:
 
 | Paper | Mechanization |
 |---|---|
-| bracket-local validity (obligation O2) | <code>honest</code> |
-| read result, merged result | <code>verdict</code> |
-| shared state witness | the <code>shared_witness_trajectory</code> family |
+| bracket-local validity (obligation O2) | `honest` |
+| read result, merged result | `verdict` |
+| shared state witness | the `shared_witness_trajectory` family |
 
 Mechanization lemma names keep their established identifiers, for example
-<code>mixing_shared_honesty_lift</code>.
+`mixing_shared_honesty_lift`.
 
 ## Paper result map
 
 The eight theorems and their Isabelle names. Corollaries, propositions and
-lemmas are listed in <code>docs/THEOREMS.md</code>. Definitions, examples and
+lemmas are listed in `docs/THEOREMS.md`. Definitions, examples and
 the TLC runs are listed in
-<code>formal/dblog_framework/CROSS_VERIFICATION.md</code>.
+`formal/dblog_framework/CROSS_VERIFICATION.md`.
 
-| Paper | Title | Isabelle names | Theory in <code>formal/dblog_framework/framework_core/</code> |
+| Paper | Title | Isabelle names | Theory in `formal/dblog_framework/framework_core/` |
 |---|---|---|---|
-| Theorem 1 | Cut theorem | <code>contract_cut</code>, <code>contract_cut_at</code>, <code>contract_cut_scope</code> | <code>Cut_Theorem.thy</code> |
-| Theorem 2 | Window-discard equivalence | <code>window_discard_replay</code> | <code>Merge_Disciplines.thy</code> |
-| Theorem 3 | Window-discard monotonicity | <code>window_discard_monotone</code> | <code>Merge_Disciplines.thy</code> |
-| Theorem 4 | Range-merge equivalence | <code>range_merge_replay</code> | <code>Range_Merge.thy</code> |
-| Theorem 5 | Range-merge monotonicity | <code>range_merge_monotone</code> | <code>Range_Merge.thy</code> |
-| Theorem 6 | Classic DBLog satisfies the contract | <code>classic_imports_upward</code>, <code>classic_sink_is_Src</code> | <code>Classic_Instance.thy</code> |
-| Theorem 7 | Transaction-complete executed-set windows are faithful | <code>oracle_agreement</code> | <code>ReadOnly_Instance.thy</code> |
-| Theorem 8 | Degradation | <code>degraded_cut</code>, <code>degraded_trajectory_from_end</code>, <code>degraded_replay</code>, <code>degraded_emitted_cut</code>, <code>trusted_point_is_degenerate_bracket</code> | <code>Dump_Splice_Instance.thy</code> |
+| Theorem 1 | Cut theorem | `contract_cut`, `contract_cut_at`, `contract_cut_scope` | `Cut_Theorem.thy` |
+| Theorem 2 | Window-discard equivalence | `window_discard_replay` | `Merge_Disciplines.thy` |
+| Theorem 3 | Window-discard monotonicity | `window_discard_monotone` | `Merge_Disciplines.thy` |
+| Theorem 4 | Range-merge equivalence | `range_merge_replay` | `Range_Merge.thy` |
+| Theorem 5 | Range-merge monotonicity | `range_merge_monotone` | `Range_Merge.thy` |
+| Theorem 6 | Classic DBLog satisfies the contract | `classic_imports_upward`, `classic_sink_is_Src` | `Classic_Instance.thy` |
+| Theorem 7 | Transaction-complete executed-set windows are faithful | `oracle_agreement` | `ReadOnly_Instance.thy` |
+| Theorem 8 | Degradation | `degraded_cut`, `degraded_trajectory_from_end`, `degraded_replay`, `degraded_emitted_cut`, `trusted_point_is_degenerate_bracket` | `Dump_Splice_Instance.thy` |
 
 ## Misreadings to avoid
 
@@ -127,22 +127,22 @@ the TLC runs are listed in
 
 ## Artifact facts
 
-- Zenodo version DOI: <code>10.5281/zenodo.22643866</code>
-- Zenodo concept DOI: <code>10.5281/zenodo.22643865</code>
-- Version: <code>1.0</code>
-- Publication date: <code>2026-09-07</code>
-- Archive: <code>Generalized_DBLog_artifact-1.0.zip</code>
+- Zenodo version DOI: `10.5281/zenodo.22643866`
+- Zenodo concept DOI: `10.5281/zenodo.22643865`
+- Version: `1.0`
+- Publication date: `2026-09-07`
+- Archive: `Generalized_DBLog_artifact-1.0.zip`
 - Archive SHA-256:
-  <code>5009f27f51863ad5065dc3225f99eae0b43d3f1791cc4a1c62370838b0ffe8a5</code>
+  `5009f27f51863ad5065dc3225f99eae0b43d3f1791cc4a1c62370838b0ffe8a5`
 - 167 files: 48 Isabelle theory files in three sessions, 6 Lean files, 5 TLA+
   specifications with 25 TLC configurations, 3 typeset proof documents,
   verification records, and the unmodified upstream archive of the classic
   DBLog development.
 - Checked with Isabelle2025-2, Lean 4.32.2, and TLC 2.19.
-- No <code>axiomatization</code>, no <code>consts</code>, no proof oracles, and
+- No `axiomatization`, no `consts`, no proof oracles, and
   no unfinished proof in the Isabelle sources.
-- One conservative source-coordinate <code>typedef</code>, in
-  <code>formal/dual_write_layer0/Source_History.thy</code>.
+- One conservative source-coordinate `typedef`, in
+  `formal/dual_write_layer0/Source_History.thy`.
 
 ## Verification commands
 
@@ -169,9 +169,9 @@ python3 reproduce.py tlc --jar /absolute/path/to/tla2tools.jar
 ~~~
 
 The Isabelle, Lean and TLC checks take time and need the tools named in
-<code>formal/README.md</code>. Do not run them unless the user asked for a
+`formal/README.md`. Do not run them unless the user asked for a
 build. Read the sources and the records under
-<code>formal/verification/</code> instead.
+`formal/verification/` instead.
 
 ### Deposit fidelity
 
@@ -183,7 +183,7 @@ unzip -q artifact.zip
 diff -r Generalized_DBLog_artifact-1.0 formal
 ~~~
 
-No output from <code>diff</code> means byte identity.
+No output from `diff` means byte identity.
 
 ## Short summary
 

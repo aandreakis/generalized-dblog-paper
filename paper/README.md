@@ -1,6 +1,6 @@
 # Paper source
 
-This directory mirrors the public arXiv v4 paper payload for:
+This directory holds the source files of the public arXiv v4 bundle for:
 
 > Generalized DBLog: A Verified Contract for Interleaving Copied Rows with a Change Log  
 > Andreas Andreakis  
@@ -8,15 +8,14 @@ This directory mirrors the public arXiv v4 paper payload for:
 
 ## Contents
 
-- <code>main.tex</code> - manuscript source
-- <code>main.bbl</code> - frozen bibliography generated for the public build
-- <code>acmart.cls</code> - class bundled with the arXiv submission
-- <code>figures/</code> - six vector-PDF figures
-- <code>generalized-dblog.pdf</code> - arXiv's stamped 40-page v4 PDF
+- `main.tex`: manuscript source
+- `main.bbl`: bibliography as generated for the public build
+- `acmart.cls`: class bundled with the arXiv submission
+- `figures/`: six vector-PDF figures
+- `generalized-dblog.pdf`: arXiv's stamped 40-page v4 PDF
 
-ArXiv's generated <code>00README.json</code> transport metadata is not
-mirrored. Every paper payload member was compared file by file with the
-public source export.
+The `00README.json` file that arXiv generates is not copied here.
+Every source file matches the public arXiv v4 bundle byte for byte.
 
 ## Build
 
@@ -26,7 +25,7 @@ pdflatex main
 pdflatex main
 ~~~
 
-The source bundle carries <code>main.bbl</code>, so BibTeX is not required
+The source bundle carries `main.bbl`, so BibTeX is not required
 for the exact public rebuild.
 
 ## Public record
@@ -37,5 +36,5 @@ for the exact public rebuild.
 - [DOI](https://doi.org/10.48550/arXiv.2609.08160)
 
 The paper text and figures are licensed CC BY 4.0, matching the arXiv
-posting. <code>acmart.cls</code> is the ACM class file. It keeps its own
+posting. `acmart.cls` is the ACM class file. It keeps its own
 terms, stated in its header.

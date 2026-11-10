@@ -6,10 +6,10 @@ title: >-
   Generalized DBLog: A Verified Contract for Interleaving Copied Rows with a
   Change Log: paper sources and formal verification artifact
 abstract: >-
-  Information hub for the paper "Generalized DBLog: A Verified Contract for
-  Interleaving Copied Rows with a Change Log." Contains the paper sources as
-  posted to arXiv and the complete formal verification artifact (Isabelle/HOL,
-  Lean 4, TLA+), byte-identical to its archived Zenodo version 1.0 deposit.
+  Paper sources and formal verification artifact for "Generalized DBLog: A
+  Verified Contract for Interleaving Copied Rows with a Change Log." The paper
+  sources are those posted to arXiv. The artifact (Isabelle/HOL, Lean 4, TLA+)
+  is byte-identical to its archived Zenodo version 1.0 deposit.
 type: software
 authors:
   - family-names: Andreakis

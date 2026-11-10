@@ -32,28 +32,27 @@ conditions under which the watermark-based and read-only results hold there.
 No numbered result of the paper changes in v3 or v4, and the verification
 artifact stays at version 1.0.
 
-### Repository payload
+### Paper files in this repository
 
-The following files under <code>paper/</code> are the payload members of
-the public v4 source:
+The following files under `paper/` come from the public arXiv v4
+source bundle:
 
-- <code>main.tex</code>
-- <code>main.bbl</code>
-- <code>acmart.cls</code>
-- six vector PDFs under <code>figures/</code>
+- `main.tex`
+- `main.bbl`
+- `acmart.cls`
+- six vector PDFs under `figures/`
 
-The public source export also supplies an arXiv-generated
-<code>00README.json</code>. It is transport metadata and is not part of the
-paper payload mirrored here.
+The public bundle also contains `00README.json`, a file that arXiv
+generates. It is not part of the paper and is not copied here.
 
-The repository PDF <code>paper/generalized-dblog.pdf</code> is arXiv's v4
+The repository PDF `paper/generalized-dblog.pdf` is arXiv's v4
 build, including its margin stamp.
 
 **Public PDF SHA-256:**
-<code>3210f8922afb86d501b7cc83d005cf62101ad91ca79ec4a6dc5f8d5c561fae76</code>
+`3210f8922afb86d501b7cc83d005cf62101ad91ca79ec4a6dc5f8d5c561fae76`
 
-The source payload was compared file by file with the public arXiv v4
-export on 10 November 2026. Every payload file was identical.
+The source files were compared with the public arXiv v4 bundle on
+10 November 2026. Every file matched byte for byte.
 
 ## Verification-artifact record
 
@@ -64,24 +63,24 @@ Contract for Interleaving Copied Rows with a Change Log"
 **Version DOI:** [10.5281/zenodo.22643866](https://doi.org/10.5281/zenodo.22643866)  
 **Concept DOI:** [10.5281/zenodo.22643865](https://doi.org/10.5281/zenodo.22643865)  
 **License:** BSD 3-Clause  
-**Archive:** <code>Generalized_DBLog_artifact-1.0.zip</code>
+**Archive:** `Generalized_DBLog_artifact-1.0.zip`
 
 **Archive SHA-256:**
-<code>5009f27f51863ad5065dc3225f99eae0b43d3f1791cc4a1c62370838b0ffe8a5</code>
+`5009f27f51863ad5065dc3225f99eae0b43d3f1791cc4a1c62370838b0ffe8a5`
 
 **Zenodo MD5:**
-<code>203fdafcf63d0975dedd0dced4941df9</code>
+`203fdafcf63d0975dedd0dced4941df9`
 
 The extracted archive contains 167 files. They include 48 Isabelle theory
 files in three sessions, 6 Lean files, 5 TLA+ specifications with 25 TLC
 configurations, 3 typeset proof documents, verification records, and the
 unmodified upstream archive of the classic DBLog development. The extracted
-tree is mirrored verbatim as <code>formal/</code>.
+tree is copied unchanged as `formal/`.
 
 The MD5 of the local archive was compared with the checksum that the Zenodo
-record publishes for its file on 20 September 2026. They matched, and the
-<code>formal/</code> tree was populated from those bytes. The archive's own
-<code>SHA256SUMS</code> file verifies all 166 other files of the tree.
+record publishes for its file on 20 September 2026. They matched, and
+`formal/` was unpacked directly from that archive. The archive's own
+`SHA256SUMS` file verifies all 166 other files of the tree.
 
 The record's title, description and file were updated in place after the first
 publication, to follow the paper's v2 title. The version number and the DOIs
@@ -91,14 +90,14 @@ published on 20 September 2026.
 ## Relationship between the records
 
 The arXiv paper cites the artifact's version DOI
-<code>10.5281/zenodo.22643866</code>. The Zenodo record declares itself
-<code>isSupplementTo</code> arXiv:2609.08160 and <code>isDerivedFrom</code> the
+`10.5281/zenodo.22643866`. The Zenodo record declares itself
+`isSupplementTo` arXiv:2609.08160 and `isDerivedFrom` the
 formal development of the earlier DBLog theory paper,
-<code>10.5281/zenodo.21732790</code>. The file
-<code>formal/ARTIFACT_PROVENANCE.md</code> documents that dependency.
+`10.5281/zenodo.21732790`. The file
+`formal/ARTIFACT_PROVENANCE.md` documents that dependency.
 
-This GitHub repository is not a third archival authority. It is an
-information hub that makes the two records easier to inspect together:
+This GitHub repository brings the paper and the artifact together in one
+place. It is not a separate archival record:
 
 - Use arXiv for the paper of record.
 - Use the Zenodo version DOI when you need the exact artifact bytes.
@@ -106,13 +105,13 @@ information hub that makes the two records easier to inspect together:
   versions.
 - Use GitHub for browsing and issue discussion.
 
-## Derived files
+## Files written for this repository
 
-The following files are derived and are not part of either archived
-payload:
+The following files were written for this repository and are not part of
+either archived record:
 
-- <code>README.md</code>
-- <code>AGENTS.md</code>
-- <code>docs/</code>
-- <code>paper/README.md</code>
-- <code>CITATION.cff</code>
+- `README.md`
+- `AGENTS.md`
+- `docs/`
+- `paper/README.md`
+- `CITATION.cff`
