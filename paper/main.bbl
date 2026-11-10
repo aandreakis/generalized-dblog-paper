@@ -1,4 +1,4 @@
-\begin{thebibliography}{49}
+\begin{thebibliography}{54}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -152,6 +152,66 @@ Andreas Andreakis.
   2026{\natexlab{b}}.
 \newblock Accessed 8 September 2026.
 
+\bibitem[{Oracle Corporation}(2026{\natexlab{b}})]{mysql_binlog_options}
+{Oracle Corporation}.
+\newblock Binary logging options and variables.
+\newblock MySQL 8.4 Reference Manual,
+  \url{https://dev.mysql.com/doc/refman/8.4/en/replication-options-binary-log.html#sysvar_binlog_order_commits},
+  2026{\natexlab{b}}.
+\newblock Accessed 4 October 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{c}})]{postgres_commit_source}
+{PostgreSQL Global Development Group}.
+\newblock {PostgreSQL} transaction commit, tuple visibility, commit decoding,
+  and snapshot function sources.
+\newblock PostgreSQL source at tag \texttt{REL\_18\_6},
+  \href{https://github.com/postgres/postgres/blob/724edf9bde9d356724ad384a2e196edc3c9f80f7/src/backend/access/transam/xact.c#L2360-L2389}{transaction
+  commit},
+  \href{https://github.com/postgres/postgres/blob/724edf9bde9d356724ad384a2e196edc3c9f80f7/src/backend/access/heap/heapam_visibility.c#L13-L27}{tuple
+  visibility},
+  \href{https://github.com/postgres/postgres/blob/724edf9bde9d356724ad384a2e196edc3c9f80f7/src/backend/replication/logical/decode.c#L667-L736}{commit
+  decoding}, and
+  \href{https://github.com/postgres/postgres/blob/724edf9bde9d356724ad384a2e196edc3c9f80f7/src/backend/utils/adt/xid8funcs.c#L370-L380}{snapshot
+  function}, 2026{\natexlab{c}}.
+\newblock Accessed 4 October 2026.
+
+\bibitem[Melnik(2025)]{aws_pg_visibility}
+Sergey Melnik.
+\newblock Understanding transaction visibility in {PostgreSQL} clusters with
+  read replicas.
+\newblock AWS Database Blog,
+  \url{https://aws.amazon.com/blogs/database/understanding-transaction-visibility-in-postgresql-clusters-with-read-replicas/},
+  May 2025.
+\newblock Published 2 May 2025. Accessed 4 October 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{d}})]{postgres_logicaldecoding_plugins}
+{PostgreSQL Global Development Group}.
+\newblock Logical decoding output plugins.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/logicaldecoding-output-plugin.html#LOGICALDECODING-OUTPUT-PLUGIN-CALLBACKS},
+  2026{\natexlab{d}}.
+\newblock Accessed 4 October 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{e}})]{postgres_transaction_iso}
+{PostgreSQL Global Development Group}.
+\newblock Transaction isolation.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/transaction-iso.html#XACT-READ-COMMITTED},
+  2026{\natexlab{e}}.
+\newblock Accessed 8 September 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{f}})]{postgres_snapshot_functions}
+{PostgreSQL Global Development Group}.
+\newblock System information functions and operators.
+\newblock PostgreSQL 18 documentation,
+  \url{https://www.postgresql.org/docs/18/functions-info.html#FUNCTIONS-INFO-SNAPSHOT},
+  2026{\natexlab{f}}.
+\newblock Accessed 17 September 2026.
+
 \bibitem[{Debezium
   Community}(2026{\natexlab{e}})]{debezium_signal_delete_source}
 {Debezium Community}.
@@ -199,12 +259,12 @@ Kate Galieva.
   context}, 2026{\natexlab{f}}.
 \newblock Accessed 8 September 2026.
 
-\bibitem[{Oracle Corporation}(2026{\natexlab{b}})]{mysql_gtid_lifecycle}
+\bibitem[{Oracle Corporation}(2026{\natexlab{c}})]{mysql_gtid_lifecycle}
 {Oracle Corporation}.
 \newblock {GTID} life cycle.
 \newblock MySQL 8.4 Reference Manual,
   \url{https://dev.mysql.com/doc/refman/8.4/en/replication-gtids-lifecycle.html},
-  2026{\natexlab{b}}.
+  2026{\natexlab{c}}.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{MariaDB}(n.d{\natexlab{c}})]{mariadb_gtid}
@@ -248,15 +308,6 @@ Kate Galieva.
   parsing}, 2026{\natexlab{h}}.
 \newblock Accessed 17 September 2026.
 
-\bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{c}})]{postgres_snapshot_functions}
-{PostgreSQL Global Development Group}.
-\newblock System information functions and operators.
-\newblock PostgreSQL 18 documentation,
-  \url{https://www.postgresql.org/docs/18/functions-info.html#FUNCTIONS-INFO-SNAPSHOT},
-  2026{\natexlab{c}}.
-\newblock Accessed 17 September 2026.
-
 \bibitem[{Apache Flink CDC
   Community}(2026{\natexlab{b}})]{flinkcdc_source_code}
 {Apache Flink CDC Community}.
@@ -286,13 +337,23 @@ Kate Galieva.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{d}})]{postgres_logicaldecoding}
+  Group}(2026{\natexlab{g}})]{postgres_logicaldecoding}
 {PostgreSQL Global Development Group}.
 \newblock Logical decoding concepts.
 \newblock PostgreSQL 18 documentation,
   \url{https://www.postgresql.org/docs/18/logicaldecoding-explanation.html#LOGICALDECODING-EXPLANATION-EXPORTED-SNAPSHOTS},
-  2026{\natexlab{d}}.
+  2026{\natexlab{g}}.
 \newblock Accessed 8 September 2026.
+
+\bibitem[{PostgreSQL Global Development
+  Group}(2026{\natexlab{h}})]{postgres_initial_snapshot_fix}
+{PostgreSQL Global Development Group}.
+\newblock Wait for transactions of an initial decoding snapshot to commit.
+\newblock PostgreSQL commit \texttt{6210f00c} on branch
+  \texttt{REL\_18\_STABLE},
+  \href{https://github.com/postgres/postgres/commit/6210f00cac2fa62b24881b31130bdb2224f7b950}{commit
+  message and changes}, 2026{\natexlab{h}}.
+\newblock Accessed 4 October 2026.
 
 \bibitem[{MariaDB Server Contributors}(2025)]{mariadb_snapshot_session_source}
 {MariaDB Server Contributors}.
@@ -307,12 +368,12 @@ Kate Galieva.
   reset}, 2025.
 \newblock Source revision dated July 28, 2025. Accessed 8 September 2026.
 
-\bibitem[{Oracle Corporation}(2026{\natexlab{c}})]{oracle_flashback}
+\bibitem[{Oracle Corporation}(2026{\natexlab{d}})]{oracle_flashback}
 {Oracle Corporation}.
 \newblock Using {Oracle Flashback} technology.
 \newblock Oracle Database Development Guide, 19c, E96334-10, Chapter 20,
   \url{https://docs.oracle.com/en/database/oracle/oracle-database/19/adfns/flashback.html},
-  2026{\natexlab{c}}.
+  2026{\natexlab{d}}.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{MariaDB}(n.d{\natexlab{f}})]{mariadb_dump}
@@ -324,28 +385,19 @@ Kate Galieva.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{e}})]{postgres_pgdump}
+  Group}(2026{\natexlab{i}})]{postgres_pgdump}
 {PostgreSQL Global Development Group}.
 \newblock pg\_dump.
 \newblock PostgreSQL 18 documentation,
-  \url{https://www.postgresql.org/docs/18/app-pgdump.html}, 2026{\natexlab{e}}.
+  \url{https://www.postgresql.org/docs/18/app-pgdump.html}, 2026{\natexlab{i}}.
 \newblock Accessed 8 September 2026.
 
-\bibitem[{Oracle Corporation}(2026{\natexlab{d}})]{mysql_consistent_read}
+\bibitem[{Oracle Corporation}(2026{\natexlab{e}})]{mysql_consistent_read}
 {Oracle Corporation}.
 \newblock Consistent nonlocking reads.
 \newblock MySQL 8.4 Reference Manual,
   \url{https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html},
-  2026{\natexlab{d}}.
-\newblock Accessed 8 September 2026.
-
-\bibitem[{PostgreSQL Global Development
-  Group}(2026{\natexlab{f}})]{postgres_transaction_iso}
-{PostgreSQL Global Development Group}.
-\newblock Transaction isolation.
-\newblock PostgreSQL 18 documentation,
-  \url{https://www.postgresql.org/docs/18/transaction-iso.html#XACT-READ-COMMITTED},
-  2026{\natexlab{f}}.
+  2026{\natexlab{e}}.
 \newblock Accessed 8 September 2026.
 
 \bibitem[{Microsoft Corporation}(2026)]{mssql_locking_guide}

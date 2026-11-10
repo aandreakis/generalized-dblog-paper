@@ -9,10 +9,10 @@ the arXiv paper and the Zenodo verification artifact.
 **Author:** Andreas Andreakis  
 **arXiv:** [2609.08160](https://arxiv.org/abs/2609.08160)  
 **arXiv DOI:** [10.48550/arXiv.2609.08160](https://doi.org/10.48550/arXiv.2609.08160)  
-**Current version:** v3, 21 September 2026  
+**Current version:** v4, 5 October 2026  
 **Subjects:** cs.DB, cs.DC, cs.LO  
 **License:** CC BY 4.0  
-**Extent:** 39 pages, 6 figures
+**Extent:** 40 pages, 6 figures
 
 ### Version history
 
@@ -21,17 +21,21 @@ the arXiv paper and the Zenodo verification artifact.
 | v1 | 8 Sep 2026 | [arXiv:2609.08160v1](https://arxiv.org/abs/2609.08160v1) |
 | v2 | 14 Sep 2026 | [arXiv:2609.08160v2](https://arxiv.org/abs/2609.08160v2) |
 | v3 | 21 Sep 2026 | [arXiv:2609.08160v3](https://arxiv.org/abs/2609.08160v3) |
+| v4 | 5 Oct 2026 | [arXiv:2609.08160v4](https://arxiv.org/abs/2609.08160v4) |
 
 Version v1 carries the title *Generalized DBLog: A Verified Contract for
-Interleaving Database Rows with a Change Log*. Versions v2 and v3 carry the
-current title. Version v3 extends the analysis to Debezium's PostgreSQL
-read-only mode. No numbered result of the paper changes, and the
-verification artifact stays at version 1.0.
+Interleaving Database Rows with a Change Log*. Versions v2, v3 and v4 carry
+the current title. Version v3 extends the analysis to Debezium's PostgreSQL
+read-only mode. Version v4 adds a sixth watermark precondition, visibility
+order, which a PostgreSQL primary does not guarantee. It states the further
+conditions under which the watermark-based and read-only results hold there.
+No numbered result of the paper changes in v3 or v4, and the verification
+artifact stays at version 1.0.
 
 ### Repository payload
 
 The following files under <code>paper/</code> are the payload members of
-the public v3 source:
+the public v4 source:
 
 - <code>main.tex</code>
 - <code>main.bbl</code>
@@ -42,14 +46,14 @@ The public source export also supplies an arXiv-generated
 <code>00README.json</code>. It is transport metadata and is not part of the
 paper payload mirrored here.
 
-The repository PDF <code>paper/generalized-dblog.pdf</code> is arXiv's v3
+The repository PDF <code>paper/generalized-dblog.pdf</code> is arXiv's v4
 build, including its margin stamp.
 
 **Public PDF SHA-256:**
-<code>29e0e095725546a3a4cb6fd4b1da2a0788410c25c0713ccd02680dac204e0937</code>
+<code>3210f8922afb86d501b7cc83d005cf62101ad91ca79ec4a6dc5f8d5c561fae76</code>
 
-The source payload was compared file by file with the public arXiv v3
-export on 22 September 2026. Every payload file was identical.
+The source payload was compared file by file with the public arXiv v4
+export on 10 November 2026. Every payload file was identical.
 
 ## Verification-artifact record
 

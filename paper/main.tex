@@ -192,8 +192,8 @@ each read with two watermark events. Watermarks are changes that are
 applied on the source and observed in the change log afterwards. Changes
 inside the bracket take
 precedence over the corresponding copied rows, so the log wins whenever
-it races the copy~\cite{andreakis2020dblog,dblog_netflix_blog}. The
-watermarks enclose the unknown read position and make each chunk's
+it races the copy~\cite{andreakis2020dblog,dblog_netflix_blog}. The design relies on the
+watermarks to enclose the unknown read position and make each chunk's
 overlap explicit. Figure~\ref{fig:windowing} illustrates one such bracket.
 This lets handoff state and progress be managed one
 unit at a time. A capture can target all tables, one table, or selected
@@ -237,7 +237,7 @@ watermark is an update to a dedicated single-row table at the source, so
 it comes back from the log as an ordinary change event. Those two events
 are the window's edges. The window is half-open, with the $lo$ cell lying
 outside it and the $hi$ cell inside. The chunk read is issued between the
-two writes, so its own log position, which is never observed, must lie
+two writes. In this example, its own log position, which is never observed, lies
 inside the window. A copied row is drawn in the column of the logged
 change that shares its key, not at a log position of its own. The logged
 $k_2$ has already gone out, so the copied $k_2$ is discarded, and only
@@ -311,7 +311,9 @@ This covers Debezium's signal-table modes (\texttt{insert\_insert} and
 \texttt{insert\_delete}), the Debezium 3.6 MySQL, MariaDB, and PostgreSQL
 read-only variants, the Flink CDC 3.6 MySQL parallel-chunk protocol,
 log-coordinate-bound reads, and native dumps, establishing that each
-correctly reconstructs source state.
+correctly reconstructs source state. On a PostgreSQL primary, the
+watermark-based and read-only results need further conditions
+(\S\ref{sec:inst-classic}, \S\ref{sec:inst-readonly}).
 
 Our analysis is based on version-pinned documentation and selected
 source code identified in \S\ref{sec:instances}. The executed-GTID proof
@@ -695,7 +697,9 @@ coordinates, and the contract does not require one shared read
 coordinate. Many concrete reads satisfy O2 more strongly, as when a statement
 snapshot or coordinate-bound read supplies the same read coordinate for every
 key in its unit. The classic algorithm's single-coordinate chunk reads
-satisfy O2 in this way (\S\ref{sec:instances}). The per-key
+satisfy O2 in this way (\S\ref{sec:instances}). On a PostgreSQL primary,
+however, the transactions in a statement snapshot do not always form a
+prefix of the log (\S\ref{sec:inst-classic}). The per-key
 form also admits a complete refresh whose keys reflect different read coordinates.
 Section~\ref{sec:theorem-torn} constructs such an instance
 and proves that no single coordinate explains all of its read results,
@@ -1213,7 +1217,8 @@ shared point bracket, where $lo_i = hi_i = c^{\ast}$ for every unit
 and the windows are empty, so there is nothing to merge and the splice
 determines everything. The second is a shared engine snapshot read
 inside wider brackets, as when every unit's select runs against one
-exported or MVCC read view. The third is a quiesced window, where
+exported or MVCC read view whose transactions form a prefix of the log.
+The third is a quiesced window, where
 writes are simply held off between the reads. The splice instances of
 \S\ref{sec:instances} are the first case as it occurs in production.
 
@@ -2179,12 +2184,12 @@ holds. None of these results claims that each prefix of the emitted
 stream follows the canonical trajectory of
 Definition~\ref{def:traj}.
 
-\paragraph{Watermark preconditions (W1-W5).}
+\paragraph{Watermark preconditions (W1-W6).}
 The formal import assumes wellformedness. A deployment must also
 be \emph{able} to run the bracket mechanism. The
-watermark-write design carries five preconditions, made explicit
+watermark-write design carries six preconditions. We make them explicit
 here because \S\ref{sec:audit} shows the 2020 paper's own support
-conditions never state them:
+conditions omit W1-W5 and state W6 only as non-stale reads:
 
 \begin{description}
 \item[\textbf{W1}] \emph{provisioning}: the watermark table exists
@@ -2205,7 +2210,91 @@ chunk reads, and the tailed log target the same instance, one
 linear commit history. Using a primary for writes and a replica 
 for reads requires a separate argument that the read lies within 
 the watermark bracket in the same history.
+\item[\textbf{W6}] \emph{visibility order}: a chunk read that starts after
+the low watermark write has completed reflects every transaction whose
+events precede that watermark in the log. MySQL documents that, with
+\texttt{binlog\_\allowbreak{}order\_\allowbreak{}commits} enabled (the
+default), transactions are committed to the storage engine in the order
+they are written to the binary log~\cite{mysql_binlog_options}.
 \end{description}
+
+\paragraph{W6 on a PostgreSQL primary.}
+A PostgreSQL primary does not guarantee W6. A committing transaction
+first writes its commit record to the log. In a later, separate step the
+server stops treating the transaction as in progress~\cite{postgres_commit_source,aws_pg_visibility}.
+For concurrent transactions, this step can occur in a different order from
+that of their commit records~\cite{aws_pg_visibility}. A statement snapshot can
+therefore contain one transaction but lack another logged before it, so the
+transactions in the snapshot do not form a prefix of the log.
+Logical decoding delivers a transaction once its commit record
+is decoded, in the order of the commit
+records~\cite{postgres_logicaldecoding_plugins,postgres_commit_source}. It
+can therefore deliver a transaction that new snapshots still treat as in
+progress.
+
+Suppose the commit record of a transaction precedes the low watermark in the
+log, and the transaction is still in progress when the chunk read starts.
+Suppose also that the transaction changes a key from $100$ to $50$ or deletes
+it, and that no later event before the high watermark changes that key. The
+read then returns $100$, so O2 fails for the key. Because no event for the key
+lies in the window, window-discard keeps the buffered row and releases it at
+the close, after the transaction's own event. The stale value $100$ stays until
+the key changes again, and a row that the transaction deleted is resurrected.
+
+The capture can restore O2 for the chunk read with the snapshot of that read
+itself. It obtains that snapshot with
+\texttt{pg\_\allowbreak{}current\_\allowbreak{}snapshot()} in the read
+statement~\cite{postgres_commit_source}, or in one repeatable-read
+transaction that also runs the read~\cite{postgres_transaction_iso}. A
+logged transaction is outside that snapshot exactly when its transaction
+ID is at or above \texttt{xmax} or appears in the snapshot's list of transactions in
+progress~\cite{postgres_snapshot_functions}. When the first logged
+transaction outside the snapshot precedes the low watermark, the capture
+moves the low edge back to immediately before that transaction or to an
+earlier transaction boundary. It then applies window-discard over the wider
+window. We call this the
+\emph{snapshot comparison}. It has three conditions:
+
+\begin{itemize}
+\item Streamed transaction IDs and snapshot IDs are compared in the same
+ID space.
+\item Every event of the wider window can remove a buffered row, including
+events the consumer processed before the read. The capture therefore
+retains their keys. Alternatively, it repeats the read with a fresh
+snapshot until every transaction logged before the low watermark is inside
+that snapshot, and only then writes the high watermark. A third way
+applies to a capture that pauses log processing during the read, as the
+original algorithm does~\cite{andreakis2020dblog}. The pause begins between
+two transactions, before the low watermark write, and the capture places the
+low edge where it paused. Window-discard then starts at the pause position
+rather than at the low watermark. It accepts a read only if every transaction
+before that position is inside the read's snapshot. It writes the high
+watermark only after an accepted read. It can check this condition directly
+for the transactions it has processed. Earlier transactions, for example
+those before a restart, need a separate check. It keeps no keys of processed
+events, because it processes every event of the wider window after the read.
+\item For each key, take the logged transactions inside the snapshot that
+changed the key. The read returns the value left by the last of them in log
+order, or the key's initial value if there are none.
+\end{itemize}
+
+We assume the third condition and do not derive it from the commit
+procedure. It corresponds to PostgreSQL's documented row-level locking,
+under which an update of a row already updated by a concurrent transaction
+waits until that transaction commits or rolls
+back~\cite{postgres_transaction_iso}.
+
+Under these conditions, every logged transaction before the low edge of
+the wider bracket is inside the snapshot. Every transaction inside the
+snapshot had completed before the read started, so it precedes the
+high watermark in the log. Now fix one key. By the third condition, if
+the last logged transaction inside the snapshot that changed the key lies beyond
+the low edge, the read result is the replay state immediately after that
+transaction.
+Otherwise the read result is the replay state
+at the low edge. In both cases the coordinate lies inside the wider
+bracket, so O2 holds there. Theorems~\ref{thm:cut} and~\ref{thm:discard} then apply
+to the wider window.
 
 \paragraph{Result.} The imported plan is T2, by
 Theorem~\ref{thm:classic} and Theorem~\ref{thm:cut}. A
@@ -2224,7 +2313,7 @@ the configured signaling data collection and reconciles the intervening
 row events by window-discard
 ~\cite{debezium_signalling,debezium_mysql_connector}. This has the same
 span-bracket and log-wins shape as the classic placement, under four
-conditions. W1-W5 hold for the signaling collection. The opening
+conditions. W1-W6 hold for the signaling collection. The opening
 record precedes the chunk read, and the closing record follows it. The
 scan returns one value-or-absence result for every owned key, each valid
 at some coordinate inside the bracket (O2-O3). Release waits until the
@@ -2235,9 +2324,9 @@ Under those conditions, Theorem~\ref{thm:cut} places the plan at T2.
 Theorem~\ref{thm:discard} and Corollary~\ref{cor:emitted-cut} give the
 finite emitted output final source replay. This bridges Debezium's documented mode to the watermarked placement
 under the stated conditions. It does not apply Theorem~\ref{thm:classic}'s
-imported wellformedness to a Debezium release. The same argument covers
-the PostgreSQL connector's signal-table
-mode~\cite{debezium_postgresql_connector}.
+imported wellformedness to a Debezium release. For the PostgreSQL
+connector's signal-table mode~\cite{debezium_postgresql_connector}, the
+same argument holds with the snapshot comparison in place of W6.
 
 The \texttt{insert\_delete} strategy uses the same bracket. The opening
 insert supplies the low edge, and deleting that row supplies the high edge.
@@ -2494,7 +2583,7 @@ The mode requires PostgreSQL 13 or later~\cite{debezium_postgresql_connector}. A
 transactions between the two that were still in progress. Every
 top-level transaction below \texttt{xmax} and outside that list had
 completed when the sample was taken, while transactions at or above
-\texttt{xmax} were still uncommitted~\cite{postgres_snapshot_functions}. A sample
+\texttt{xmax} had not yet completed~\cite{postgres_snapshot_functions}. A sample
 therefore describes a set of completed transactions, as an executed-GTID
 set does for MySQL. The IDs of transactions still in progress
 only delimit that set. The construction reads no event of an active
@@ -2521,8 +2610,8 @@ to use the same ID space. When the low sample takes effect, it
 must include every transaction the consumer has already processed. As
 with MySQL's \texttt{Executed\_Gtid\_Set}, we assume that each accepted
 sample represents exactly the transactions in one complete prefix of the
-consumed log. This prefix property is not derived from the server's
-commit procedure.
+consumed log. A PostgreSQL primary guarantees neither of the last two
+conditions (\S\ref{sec:inst-classic}), and we keep both as assumptions.
 
 Under these conditions, the connector's window contains the interval
 between the samples. Every event at or beyond the sampled low boundary
@@ -2741,6 +2830,8 @@ replication slot creation exports a snapshot together with a
 \texttt{consistent\_point}, ``exactly the state of the database
 after which all changes will be included in the change
 stream''~\cite{postgres_protocol_replication,postgres_logicaldecoding}.
+The PostgreSQL instance relies on an upstream fix to slot creation that
+PostgreSQL 18.6 does not contain~\cite{postgres_initial_snapshot_fix}.
 In each case a select, or a whole-table copy, runs inside that
 read view, and log consumption starts at the recorded coordinate. For
 a composite of several such units it starts at or before the earliest
@@ -3350,6 +3441,10 @@ assumptions for each protocol.
 The watermark table must be writable, both markers must be recognizable in 
 the change log, and the chunk scan must cover its key range completely. 
 The connector must consume past the high marker before emitting surviving chunk rows. 
+A chunk read that starts after the low marker write has completed must reflect
+every transaction logged before that marker (W6). On a PostgreSQL primary,
+which does not guarantee this, the connector must apply the snapshot
+comparison of \S\ref{sec:inst-classic}.
 Theorem~\ref{thm:classic} proves that this original watermark protocol 
 satisfies the generalized contract.
 
@@ -3365,7 +3460,8 @@ high watermark. Debezium converts that deletion into an internal close
 signal, provided the delete event's before-image retains the primary 
 key~\cite{debezium_signalling,debezium_signal_delete_source,debezium_mysql_connector}.
 The mode and these conditions are the same for the PostgreSQL
-connector~\cite{debezium_postgresql_connector}.
+connector~\cite{debezium_postgresql_connector}. On a PostgreSQL primary, the connector
+must also apply the snapshot comparison described for classic DBLog.
 
 \paragraph{Debezium MySQL}
 Debezium's read-only MySQL mode uses \texttt{Executed\_Gtid\_Set} samples as 
@@ -3412,7 +3508,8 @@ the sampled \texttt{xmin} and \texttt{xmax} boundaries to decide when the window
 Each sample must represent a complete prefix of the consumed change
 log. When the low sample takes effect, it must include every transaction
 the connector has already processed. The streamed transaction IDs and
-sampled bounds must also use the same ID space. Under these
+sampled bounds must also use the same ID space. A PostgreSQL primary
+guarantees neither of the first two conditions (\S\ref{sec:inst-readonly}). Under these
 conditions, the connector's window covers the sampled interval and may
 extend beyond it. The mode therefore yields the same base guarantee as
 the MySQL mode.
@@ -3536,18 +3633,19 @@ freshness alone is not enough. The chunk scan must completely cover its assigned
 key range without silently skipping rows. If an unchanged row is missed by the 
 scan, no change-log event will arrive to repair it.
 On the write side, watermarking implicitly requires table provisioning, write 
-permissions, log coverage, recognizable marker events, and an ordered log. 
+permissions, log coverage, recognizable marker events, an ordered log, and
+visibility order.
 The generalized contract formalizes these properties as explicit read 
 obligations (O2 and O3, \S\ref{sec:contract-obligations}) and watermark 
-preconditions (W1 through W5, \S\ref{sec:inst-classic}), examined in 
+preconditions (W1 through W6, \S\ref{sec:inst-classic}), examined in
 Sections~\ref{sec:audit-read} and~\ref{sec:audit-write} below.
 
 \subsection{Read completeness}\label{sec:audit-read}
 
 The 2020 paper states its chunk-read requirement twice, at different 
 strengths. The strong form requires that ``the selection executes on a specific 
-position of the transaction log.'' That means a single coordinate, a statement 
-snapshot, which satisfies O2 with every key witnessed uniformly and is 
+position of the transaction log.'' That means a single coordinate, which
+satisfies O2 with every key witnessed uniformly and is
 sufficient by Theorem~\ref{thm:classic}. The text then generalizes, requiring 
 that ``the chunk selection sees the changes that are committed before its 
 execution,'' names this capability \emph{non-stale reads}, and includes only 
@@ -3560,6 +3658,19 @@ changes inside the window, its log event removes or replaces the buffered row.
 If a key does not change, a value reflecting the source state at any coordinate 
 in the bracket remains valid. This is why the theorem does not require all keys 
 to share one read coordinate.
+
+The phrase ``committed before its execution'' can be read in two ways.
+The plain reading requires the chunk read to reflect
+every transaction whose commit had completed when the read started. The log-order
+reading requires it to reflect every transaction logged before the low
+watermark. W6 is the log-order reading
+(\S\ref{sec:inst-classic}). Under MySQL's ordered commits, a read that
+satisfies the plain reading and starts after the low watermark write has
+completed also satisfies the log-order
+reading~\cite{mysql_binlog_options,mysql_consistent_read}. On a PostgreSQL
+primary this implication does not hold. A chunk read can then miss a
+transaction logged before the low watermark, and O2 can fail for the keys
+that transaction changed.
 
 Scan completeness addresses a different requirement. Freshness constrains the 
 values of rows that return, but says nothing about which rows return. Suppose a 
@@ -3575,7 +3686,7 @@ require every window-invariant present key to be returned with its valid value
 The vendor documentation shows why this distinction matters. On MySQL and 
 PostgreSQL, a read-committed select executes against a single statement 
 snapshot~\cite{mysql_consistent_read,postgres_transaction_iso}. The 2020 
-deployments therefore satisfied the stronger condition automatically. Under 
+deployments therefore satisfied scan completeness automatically. Under
 SQL Server's default locking read committed, shared row locks are released as 
 the scan advances. Microsoft's locking guide documents that a concurrent key 
 update can move a row so that it appears twice or is skipped 
@@ -3590,13 +3701,14 @@ clear: ``non-stale reads'' alone does not guarantee the scan completeness that
 DBLog relies on, whereas an engine statement snapshot guarantees it by design.
 
 The complete condition is the contract's combination of O2 with O3, with a 
-statement snapshot serving as the canonical sufficient condition and the strong 
-2020 formulation as its uniform special case. Read against this, the 2020 text 
-was correct for the engines it shipped on, but underspecified as a general 
-portability criterion. The limitation lay in the portability criterion itself.
+statement snapshot at one in-bracket coordinate serving as the canonical
+sufficient condition and the strong
+2020 formulation as its uniform special case. Read against this, the two requirements
+listed in the 2020 paper were not sufficient for PostgreSQL, an engine that
+paper lists as supported. A PostgreSQL primary can satisfy both, with
+non-stale reads in the plain reading, and still violate W6.
 An isolation-level label does not by itself establish complete per-key bracket
-validity, for which an engine statement snapshot provides one proven sufficient
-condition.
+validity.
 
 \subsection{Watermark preconditions}\label{sec:audit-write}
 The same Database Support section in the 2020 paper lists only commit-ordered 
@@ -3610,10 +3722,12 @@ while being unable to
 run the watermark path.
 
 Section~\ref{sec:inst-classic} makes these requirements explicit. Conditions W1 
-through W5 state what the watermark mechanism actually requires, from table 
-provisioning and write access to capture coverage, recognizability, and 
-same-instance ordering coupling. None of them is new. Each is drawn directly 
-from the 2020 paper's own mechanism description. What is new is recognizing them 
+through W6 state what the watermark mechanism actually requires, from table
+provisioning and write access to capture coverage, recognizability,
+same-instance ordering coupling, and visibility order. None of them is new. W1
+through W5 are drawn directly from the 2020 paper's own mechanism description,
+and W6 is the log-order reading of non-stale reads
+(\S\ref{sec:audit-read}). What is new is recognizing them
 as preconditions of one specific bracket construction rather than universal 
 requirements of change-data-capture. Writability is a property of the chosen 
 bracket mechanism, not of the datastore. The write-free instance of 
@@ -3681,8 +3795,8 @@ imported corpus, from a clean environment with permissive mode
 disabled. A clean build therefore checks every stated result rather
 than reusing a cached proof image.
 
-The theorems are exercised as well as proved. Every countermodel this
-paper presents exists in the development as a constructed instance.
+The theorems are exercised as well as proved. Every countermodel in the
+numbered results exists in the development as a constructed instance.
 The no-shared-read-point instance of Proposition~\ref{prop:torn}, the
 no-early-onset composite of Proposition~\ref{prop:sync}, and the
 window-narrowed variant of Proposition~\ref{prop:withhold} each carry
@@ -3690,7 +3804,10 @@ their failure proofs there, establishing no single shared read coordinate, no ea
 onset, and a wrong replay, respectively. The degradation bracket of
 Example~\ref{ex:degrade} is likewise mechanized as a concrete instance, 
 and the positive theorems are instantiated at concrete plans in the same 
-style rather than left abstract.
+style rather than left abstract. The PostgreSQL passage of
+\S\ref{sec:inst-classic}, including the snapshot comparison, argues in prose
+from PostgreSQL's commit procedure and Theorems~\ref{thm:cut}
+and~\ref{thm:discard}, and it is not mechanized.
 
 \paragraph{Where the effort went.}
 The proof effort was not spread evenly across the development. The
@@ -3881,7 +3998,8 @@ The connector must discard buffered rows matching in-window change events
 (A-discard), withhold surviving chunk rows until the closing signal is consumed 
 from the log, and observe all intermediate log events without gaps (S-OBS). 
 The signaling collection must also satisfy the watermark
-preconditions (W1--W5, \S\ref{sec:inst-classic}). Enabling the
+preconditions (W1--W6, \S\ref{sec:inst-classic}). On a PostgreSQL primary,
+the snapshot comparison described there takes the place of W6. Enabling the
 source signal channel does not itself prove that its collection is
 captured or its records recognizable. Under \texttt{insert\_delete},
 the deletion supplies the close only when its before-image retains the
@@ -3928,7 +4046,8 @@ represents exactly the transactions in one complete prefix of the
 consumed log (A-linear, \S\ref{sec:inst-readonly}). The low sample must
 include every transaction already processed by the consumer when it takes
 effect. Streamed transaction IDs and sampled snapshot bounds must
-share the same ID space. Chunk reads must be complete (A-read), row
+share the same ID space. A PostgreSQL primary guarantees neither of the
+first two conditions (\S\ref{sec:inst-readonly}). Chunk reads must be complete (A-read), row
 identities must remain stable (A-scope), and log events must carry full
 row images (S-IMG). The connector must also observe all required log
 events (S-OBS) and follow the window-discard release rules (A-discard).
@@ -3988,7 +4107,10 @@ copy can be assessed against the same contract.
 
 We prove that the original watermarked DBLog protocol, Debezium's signal-table 
 modes, Debezium's MySQL and PostgreSQL read-only protocols, and Flink CDC's
-parallel-chunk protocol fulfil this contract. For Debezium's MariaDB read-only protocol, the proof covers 
+parallel-chunk protocol fulfil this contract. On a PostgreSQL primary, the
+watermark-based and read-only proofs need further conditions
+(\S\ref{sec:inst-classic}, \S\ref{sec:inst-readonly}).
+For Debezium's MariaDB read-only protocol, the proof covers 
 the quiet-point and empty-buffer cases, and a populated buffer with a nonempty
 GTID difference remains open. The proofs state the source
 guarantees and connector behavior required by each. Native dumps tied to exact 
