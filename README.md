@@ -4,6 +4,7 @@
 
 [![Paper (arXiv)](https://img.shields.io/badge/paper-arXiv%3A2609.08160-b31b1b)](https://arxiv.org/abs/2609.08160)
 [![Artifact 1.0 DOI](https://img.shields.io/badge/artifact-10.5281%2Fzenodo.22643866-1682D4)](https://doi.org/10.5281/zenodo.22643866)
+[![Blog Post](https://img.shields.io/badge/blog-aandreakis.com-0e7c66)](https://aandreakis.com/posts/a-verified-theoretical-basis-for-incremental-snapshots-in-debezium-and-flink-cdc)
 
 Sources for the paper **"Generalized DBLog: A Verified Contract for Interleaving
 Copied Rows with a Change Log"** (Andreas Andreakis, 2026) and the formal
@@ -32,6 +33,7 @@ independently verified in Lean 4. Five TLA+ specifications of the protocols are
 examined by bounded model checking, which gives evidence rather than a proof.
 
 **Links:** [paper on arXiv](https://arxiv.org/abs/2609.08160) ·
+[companion blog post](https://aandreakis.com/posts/a-verified-theoretical-basis-for-incremental-snapshots-in-debezium-and-flink-cdc) ·
 [archived artifact (Zenodo)](https://doi.org/10.5281/zenodo.22643866) ·
 [result index](docs/THEOREMS.md) ·
 [provenance](docs/PROVENANCE.md) ·
